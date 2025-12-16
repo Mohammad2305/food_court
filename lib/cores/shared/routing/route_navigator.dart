@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_court/features/delivery_address/presentation/manager/delivery_address_cubit.dart';
+import 'package:food_court/features/payment/presentation/manager/payment_cubit.dart';
+import 'package:food_court/features/payment/presentation/ui/pages/add_card/add_card_screen.dart';
+import 'package:food_court/features/payment/presentation/ui/pages/methods/methods_screen.dart';
 import '../../../features/account/presentation/ui/account_screen.dart';
 import '../../../features/auth/presentation/ui/pages/finger_print_set/finger_print_set_screen.dart';
 import '../../../features/auth/presentation/ui/pages/login/login_screen.dart';
@@ -79,6 +82,17 @@ class RouteNavigator {
         );
       case AppRoutes.newAddressScreen:
         return MaterialPageRoute(builder: (_) => const NewAddressScreen());
+      // Layout Screens => *profile screen* => *payment screen*
+      case AppRoutes.methodsScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<PaymentCubit>(
+            create: (context) => PaymentCubit(),
+            child: MethodsScreen(),
+          ),
+        );
+      case AppRoutes.addCardScreen:
+        return MaterialPageRoute(builder: (_) => const AddCardScreen());
+
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

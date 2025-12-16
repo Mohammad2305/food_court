@@ -71,4 +71,10 @@ class AppAssets{
 
   // profile screens => *address screen*
   static final String address = "$svgPath/address/address.svg";
+
+  // profile screens => *payment screen*
+  static final String apple = "$svgPath/payment/apple.svg";
+  static final String googlePlay = "$svgPath/payment/google_play.svg";
+  static final String payPal = "$svgPath/payment/paypal.svg";
+  static final String card = "$pngPath/card.png";
 }

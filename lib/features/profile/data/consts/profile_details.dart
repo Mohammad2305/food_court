@@ -28,7 +28,9 @@ List<ProfileDetailModel> profileDetails(BuildContext context) => [
   ProfileDetailModel(
     icon: AppAssets.paymentIcon,
     title: 'Payment Methods',
-    onTap: () {debugPrint("go to payments");},
+    onTap: () {
+      Navigator.pushNamed(context, AppRoutes.methodsScreen);
+    },
   ),
   ProfileDetailModel(
     icon: AppAssets.contactIcon,

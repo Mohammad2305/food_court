@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constants/app_colors.dart';
 
 extension WidgetMainApp on Widget{
   Widget sized({double? vertical, double? horizontal}) => SizedBox(
@@ -19,6 +18,15 @@ extension WidgetMainApp on Widget{
             color: Colors.black38,
           ),
         )
+    ),
+    child: this,
+  );
+
+  Widget get outLine => Container(
+    decoration: BoxDecoration(
+        border: BoxBorder.fromBorderSide(BorderSide(
+          color: Colors.black38,
+        ))
     ),
     child: this,
   );

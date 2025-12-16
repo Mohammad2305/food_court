@@ -34,4 +34,8 @@ class AppRoutes{
   // Layout Screens => *profile screen* => *address screen*
   static const String addressListScreen = "address_list_screen";
   static const String newAddressScreen = "new_address_screen";
+
+  // Layout Screens => *profile screen* => *payment screen*
+  static const String methodsScreen = "methods_screen";
+  static const String addCardScreen = "add_card_screen";
 }

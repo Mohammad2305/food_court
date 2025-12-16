@@ -4,8 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
 import 'package:food_court/features/delivery_address/presentation/ui/pages/new_address/widgets/new_address_form.dart';
-import '../../../../../../cores/shared/themes/app_boxes_decoration.dart';
-import '../../../../../../cores/shared/ui/widgets/custom_button.dart';
 import '../../../../../../cores/shared/ui/widgets/general_app_bar.dart';
 import '../../../../../../cores/shared/ui/widgets/screen_layout.dart';
 import '../../../../../../cores/utils/constants/app_colors.dart';
@@ -29,16 +27,6 @@ class NewAddressScreen extends StatelessWidget {
               width: 80.w,
             ).onlyPadding(bottom: 50.h),
             NewAddressForm(),
-            CustomButton(
-              onTap: () {debugPrint("add new address");},
-              decoration: AppBoxDecoration.welcomeButton(
-                AppColors.welcomeColor,
-              ),
-              width: 150.w,
-              padding: EdgeInsets.symmetric(vertical: 8.h),
-              textColor: AppColors.whiteText,
-              label: "Apply",
-            ),
           ],
         ),
       ),
