@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
@@ -43,7 +44,7 @@ class AdsCenter extends StatelessWidget {
                     image: DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
-                          "https://i.pinimg.com/736x/c9/c5/01/c9c5013a47c78dde12d22a8659cdb945.jpg",
+                          AppAssets.imageSample,
                         )
                     )
                 ),

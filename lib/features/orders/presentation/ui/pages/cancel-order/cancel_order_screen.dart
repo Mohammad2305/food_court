@@ -8,6 +8,7 @@ import 'package:food_court/cores/shared/ui/widgets/custom_button.dart';
 import 'package:food_court/cores/shared/ui/widgets/screen_layout.dart';
 import 'package:food_court/cores/utils/constants/app_colors.dart';
 import 'package:food_court/cores/utils/extensions/aligns.dart';
+import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
 import 'package:food_court/cores/utils/extensions/strings.dart';
 import 'package:food_court/features/orders/presentation/manager/orders_cubit.dart';
@@ -51,7 +52,7 @@ class CancelOrderScreen extends StatelessWidget {
               label: "submit".firstCharacterUpper,
             ).centering,
           ],
-        ),
+        ).scrolling,
       ),
     );
   }

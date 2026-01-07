@@ -62,6 +62,11 @@ class AppTextStyles {
     fontWeight: FontWeight.w300,
   );
 
+  static TextStyle textFtS8FW500 = TextStyle(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle zero = TextStyle(
       fontSize: 0,
       fontWeight: FontWeight.w100

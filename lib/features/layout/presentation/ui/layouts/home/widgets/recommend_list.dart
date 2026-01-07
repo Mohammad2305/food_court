@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/extensions/strings.dart';
 
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
@@ -35,7 +36,7 @@ class RecommendList extends StatelessWidget {
               ),
               clipBehavior: Clip.hardEdge,
               child: Image.network(
-                "https://i.pinimg.com/736x/c9/c5/01/c9c5013a47c78dde12d22a8659cdb945.jpg",
+                AppAssets.imageSample,
                 fit: BoxFit.cover,
               ),
             );

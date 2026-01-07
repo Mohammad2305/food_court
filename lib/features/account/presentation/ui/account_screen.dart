@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/shared/ui/widgets/general_app_bar.dart';
 import 'package:food_court/cores/shared/ui/widgets/screen_layout.dart';
 import 'package:food_court/cores/utils/constants/app_colors.dart';
+import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/features/account/presentation/ui/widgets/edit_account_info_form.dart';
 import 'package:food_court/features/account/presentation/ui/widgets/profile_image.dart';
 
@@ -22,7 +23,7 @@ class AccountScreen extends StatelessWidget {
             ProfileImage(),
             EditAccountInfoForm()
           ],
-        ),
+        ).scrolling,
       ),
     );
   }

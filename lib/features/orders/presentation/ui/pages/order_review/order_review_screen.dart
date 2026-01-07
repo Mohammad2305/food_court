@@ -4,6 +4,7 @@ import 'package:food_court/cores/shared/themes/app_text_styles.dart';
 import 'package:food_court/cores/shared/ui/widgets/general_app_bar.dart';
 import 'package:food_court/cores/shared/ui/widgets/screen_layout.dart';
 import 'package:food_court/cores/utils/constants/app_colors.dart';
+import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
 import 'package:food_court/features/orders/presentation/ui/pages/order_review/widgets/review_actions.dart';
 import 'package:food_court/features/orders/presentation/ui/pages/order_review/widgets/review_stars.dart';
@@ -51,7 +52,7 @@ class OrderReviewScreen extends StatelessWidget {
             CustomInput().onlyPadding(bottom: 30.h),
             ReviewActions()
           ],
-        ),
+        ).scrolling,
       ),
     );
   }

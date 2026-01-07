@@ -2,7 +2,10 @@ String mainPath = "assets/images";
 String svgPath = "$mainPath/svg";
 String pngPath = "$mainPath/png";
 
-class AppAssets{
+class AppAssets {
+  static final String imageSample =
+      "https://i.pinimg.com/1200x/84/d2/45/84d245e9d2151abe3ed9bbf8fff8b587.jpg";
+
   // splash screen
   static final String splash = "$svgPath/logo.svg";
 
@@ -22,7 +25,8 @@ class AppAssets{
   static final String facebookIcon = "$svgPath/auth/facebook.svg";
   static final String fingerPrintIcon = "$svgPath/auth/fingerprint.svg";
   static final String fingerPrintGreyBig = "$svgPath/auth/fingerprint_big.svg";
-  static final String fingerPrintBig = "$svgPath/auth/fingerprint_big_colored.svg";
+  static final String fingerPrintBig =
+      "$svgPath/auth/fingerprint_big_colored.svg";
   static final String closeEye = "$svgPath/auth/closed_eye.svg";
   static final String openEye = "$svgPath/auth/open_eye.svg";
 
@@ -31,7 +35,8 @@ class AppAssets{
   static final String dinnerIcon = "$svgPath/layout/general/dinner.svg";
   static final String loveIcon = "$svgPath/layout/general/love.svg";
   static final String menuIcon = "$svgPath/layout/general/menu.svg";
-  static final String callCenterIcon = "$svgPath/layout/general/call_center.svg";
+  static final String callCenterIcon =
+      "$svgPath/layout/general/call_center.svg";
   static final List<String> navigators = [
     AppAssets.homeIcon,
     AppAssets.dinnerIcon,
@@ -42,7 +47,8 @@ class AppAssets{
 
   // layout screens => *home screen*
   static final String cartIcon = "$svgPath/layout/home/cart.svg";
-  static final String notificationIcon = "$svgPath/layout/home/notification.svg";
+  static final String notificationIcon =
+      "$svgPath/layout/home/notification.svg";
   static final String profileIcon = "$svgPath/layout/home/profile.svg";
   static final String searchIcon = "$svgPath/layout/home/search.svg";
   static final String desserts = "$svgPath/layout/home/desserts.svg";
@@ -76,5 +82,6 @@ class AppAssets{
   static final String apple = "$svgPath/payment/apple.svg";
   static final String googlePlay = "$svgPath/payment/google_play.svg";
   static final String payPal = "$svgPath/payment/paypal.svg";
+  static final String electricChip = "$svgPath/payment/electric_chip.svg";
   static final String card = "$pngPath/card.png";
 }

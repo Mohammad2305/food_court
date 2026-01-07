@@ -16,7 +16,7 @@ class BottomNavigationCustomBuild extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor,),
-      height: 70.h,
+      height: 80.h,
       width: double.infinity,
       padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 40.w),
       child: ListView.separated(

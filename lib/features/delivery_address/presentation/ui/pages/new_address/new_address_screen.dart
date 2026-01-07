@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_court/cores/utils/constants/app_assets.dart';
+import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
 import 'package:food_court/features/delivery_address/presentation/ui/pages/new_address/widgets/new_address_form.dart';
 import '../../../../../../cores/shared/ui/widgets/general_app_bar.dart';
@@ -28,7 +29,7 @@ class NewAddressScreen extends StatelessWidget {
             ).onlyPadding(bottom: 50.h),
             NewAddressForm(),
           ],
-        ),
+        ).scrolling,
       ),
     );
   }

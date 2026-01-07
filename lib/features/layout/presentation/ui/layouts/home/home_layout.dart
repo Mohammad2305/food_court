@@ -32,7 +32,7 @@ class HomeLayout extends StatelessWidget {
                       RecommendList()
                     ],
                   )
-                  .onlyPadding(left: 36.w, right: 36.w, top: 34.h, bottom: 60.h)
+                  .onlyPadding(left: 36.w, right: 36.w, top: 34.h, bottom: 100.h)
                   .scrolling,
         ),
       ],

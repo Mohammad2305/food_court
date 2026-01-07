@@ -17,16 +17,18 @@ class CompletedOrdersLayout extends StatelessWidget {
         return Row(
           spacing: 10.w,
           children: [
-            Container(
-              height: 105.h,
-              decoration: AppBoxDecoration.general(
-                AppColors.whiteText,
-                10.r,
-              ),
-              clipBehavior: Clip.hardEdge,
-              child: Image.network(
-                "https://i.pinimg.com/736x/4c/04/f0/4c04f0cb3399d2c2792e14e52cc5ba82.jpg",
-                fit: BoxFit.cover,
+            Expanded(
+              child: Container(
+                height: 105.h,
+                decoration: AppBoxDecoration.general(
+                  AppColors.whiteText,
+                  10.r,
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: Image.network(
+                  "https://i.pinimg.com/736x/4c/04/f0/4c04f0cb3399d2c2792e14e52cc5ba82.jpg",
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             Column(

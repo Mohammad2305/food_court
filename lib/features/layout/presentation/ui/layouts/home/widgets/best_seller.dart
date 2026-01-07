@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../../../../cores/shared/themes/app_text_styles.dart';
@@ -49,7 +50,7 @@ class BestSeller extends StatelessWidget {
               width: 75.w,
               height: 110.h,
               child: Image.network(
-                "https://i.pinimg.com/736x/09/15/1d/09151d0100060e1de5165623865f2c2b.jpg",
+                AppAssets.imageSample,
                 fit: BoxFit.cover,
               ),
             );

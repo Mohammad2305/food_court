@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1096600274988",
+    "project_id": "food-court-89c2b",
+    "storage_bucket": "food-court-89c2b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096600274988:android:af61a95c0260ea4d37a989",
+        "android_client_info": {
+          "package_name": "com.example.food_court"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRInjYMtKTyqCr_wyWnicSVJsKMPmbLd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
