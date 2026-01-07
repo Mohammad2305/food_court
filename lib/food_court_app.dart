@@ -19,6 +19,8 @@ class FoodCourtApp extends StatelessWidget {
           onGenerateRoute: RouteNavigator.onGenerateRoute,
           initialRoute: AppRoutes.splashScreen,
           theme: AppThemes.lightTheme,
+          darkTheme: AppThemes.darkTheme,
+          themeMode: ThemeMode.dark,
         );
       },
     );

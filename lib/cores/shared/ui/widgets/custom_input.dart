@@ -4,7 +4,9 @@ import 'package:food_court/cores/shared/themes/app_text_styles.dart';
 
 class CustomInput extends StatelessWidget {
   final String? inputTitle;
-  const CustomInput({super.key, this.inputTitle});
+  final TextEditingController inputController;
+  final String hintText;
+  const CustomInput({super.key, this.inputTitle, required this.inputController, required this.hintText});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,13 @@ class CustomInput extends StatelessWidget {
           inputTitle??"",
           style: inputTitle==null ? AppTextStyles.zero : AppTextStyles.textFtS17FW500,
         ),
-        TextFormField(),
+        TextFormField(
+          controller: inputController,
+          decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: AppTextStyles.textFtS14FW500
+          ),
+        ),
       ],
     );
   }

@@ -15,20 +15,40 @@ class AddCardForm extends StatelessWidget {
       child: Column(
         spacing: 30.h,
         children: [
-          CustomInput(inputTitle: "Card holder name",),
-          CustomInput(inputTitle: "Card Number",),
+          CustomInput(
+            inputTitle: "Card holder name",
+            hintText: "Mohammed Nasser Ali Ahmed",
+            inputController: TextEditingController(),
+          ),
+          CustomInput(
+            inputTitle: "Card Number",
+            hintText: "000 000 000 00",
+            inputController: TextEditingController(),
+          ),
           Row(
             spacing: 10.w,
             children: [
-              Expanded(child: CustomInput(inputTitle: "Expiry date",)),
-              Expanded(child: CustomInput(inputTitle: "CVV",)),
+              Expanded(
+                child: CustomInput(
+                  inputTitle: "Expiry date",
+                  hintText: "MM/YY",
+                  inputController: TextEditingController(),
+                ),
+              ),
+              Expanded(
+                child: CustomInput(
+                  inputTitle: "CVV",
+                  hintText: "0000",
+                  inputController: TextEditingController(),
+                ),
+              ),
             ],
           ),
           CustomButton(
-            onTap: () {debugPrint("Save Card");},
-            decoration: AppBoxDecoration.welcomeButton(
-              AppColors.welcomeColor,
-            ),
+            onTap: () {
+              debugPrint("Save Card");
+            },
+            decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),
             width: 150.w,
             padding: EdgeInsets.symmetric(vertical: 8.h),
             textColor: AppColors.whiteText,

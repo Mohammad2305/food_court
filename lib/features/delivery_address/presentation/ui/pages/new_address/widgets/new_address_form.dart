@@ -15,8 +15,16 @@ class NewAddressForm extends StatelessWidget {
       child: Column(
         spacing: 30.h,
         children: [
-          CustomInput(inputTitle: "Name",),
-          CustomInput(inputTitle: "Address",),
+          CustomInput(
+            inputTitle: "Name",
+            hintText: "Work",
+            inputController: TextEditingController(),
+          ),
+          CustomInput(
+            inputTitle: "Address",
+            hintText: "Cario - Egypt",
+            inputController: TextEditingController(),
+          ),
           CustomButton(
             onTap: () {debugPrint("add new address");},
             decoration: AppBoxDecoration.welcomeButton(

@@ -17,18 +17,34 @@ class EditAccountInfoForm extends StatelessWidget {
           child: Column(
             spacing: 30.h,
             children: [
-              CustomInput(inputTitle: "Full Name"),
-              CustomInput(inputTitle: "Date of Birth"),
-              CustomInput(inputTitle: "Email"),
-              CustomInput(inputTitle: "Phone Number"),
+              CustomInput(
+                inputTitle: "Full Name",
+                hintText: "Mohammed Nasser Ali Ahmed Fadl",
+                inputController: TextEditingController(),
+              ),
+              CustomInput(
+                inputTitle: "Date of Birth",
+                hintText: "DD/MM/YYYY",
+                inputController: TextEditingController(),
+              ),
+              CustomInput(
+                inputTitle: "Email",
+                hintText: "example@example.com",
+                inputController: TextEditingController(),
+              ),
+              CustomInput(
+                inputTitle: "Phone Number",
+                hintText: "+123 567 89000",
+                inputController: TextEditingController(),
+              ),
             ],
           ),
         ),
         CustomButton(
-          onTap: () {debugPrint("Update Profile");},
-          decoration: AppBoxDecoration.welcomeButton(
-            AppColors.welcomeColor,
-          ),
+          onTap: () {
+            debugPrint("Update Profile");
+          },
+          decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),
           label: "Update Profile",
           width: 145.w,
           padding: EdgeInsets.symmetric(vertical: 8.h),

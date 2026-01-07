@@ -18,8 +18,11 @@ class SetPasswordForm extends StatelessWidget {
       child: Column(
         spacing: 8.h,
         children: [
-          PasswordInput(),
-          PasswordInput(inputTitle: "Confirm",).onlyPadding(bottom: 50.h),
+          PasswordInput(inputController: TextEditingController()),
+          PasswordInput(
+            inputTitle: "Confirm",
+            inputController: TextEditingController(),
+          ).onlyPadding(bottom: 50.h),
           CustomButton(
             onTap: () {},
             decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),

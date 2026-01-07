@@ -36,6 +36,8 @@ class CancelReasons extends StatelessWidget {
         ),
         CustomInput(
           inputTitle: "others".firstCharacterUpper,
+          hintText: "Others",
+          inputController: TextEditingController(),
         ).onlyPadding(bottom: 30.h),
       ],
     );

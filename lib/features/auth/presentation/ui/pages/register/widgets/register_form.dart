@@ -19,11 +19,27 @@ class RegisterForm extends StatelessWidget {
       child: Column(
         spacing: 8.h,
         children: [
-          CustomInput(inputTitle: "Full name"),
-          PasswordInput(),
-          CustomInput(inputTitle: "Email"),
-          CustomInput(inputTitle: "Mobile Number"),
-          CustomInput(inputTitle: "Date of birth"),
+          CustomInput(
+            inputTitle: "Full name",
+            hintText: "Mohammed Nasser Ali Ahmed",
+            inputController: TextEditingController(),
+          ),
+          PasswordInput(inputController: TextEditingController(),),
+          CustomInput(
+            inputTitle: "Email",
+            hintText: "example@example.com",
+            inputController: TextEditingController(),
+          ),
+          CustomInput(
+            inputTitle: "Mobile Number",
+            hintText: "+ 123 456 789",
+            inputController: TextEditingController(),
+          ),
+          CustomInput(
+            inputTitle: "Date of birth",
+            hintText: "DD/MM/YYYY",
+            inputController: TextEditingController(),
+          ),
           TermsPrivacy(),
           CustomButton(
             onTap: () {},
@@ -33,7 +49,7 @@ class RegisterForm extends StatelessWidget {
             textColor: AppColors.whiteText,
             label: "Sign Up",
           ).centering,
-        ]
+        ],
       ),
     );
   }

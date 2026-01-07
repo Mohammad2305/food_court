@@ -49,7 +49,10 @@ class OrderReviewScreen extends StatelessWidget {
               style: AppTextStyles.textFtS17FW300,
               textAlign: TextAlign.center,
             ).onlyPadding(bottom: 7.h),
-            CustomInput().onlyPadding(bottom: 30.h),
+            CustomInput(
+              hintText: "Leave Comment",
+              inputController: TextEditingController(),
+            ).onlyPadding(bottom: 30.h),
             ReviewActions()
           ],
         ).scrolling,

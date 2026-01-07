@@ -22,8 +22,10 @@ class LoginForm extends StatelessWidget {
         children: [
           CustomInput(
             inputTitle: "Email or Mobile Number",
+            hintText: "example@example.com",
+            inputController: TextEditingController(),
           ),
-          PasswordInput(),
+          PasswordInput(inputController: TextEditingController(),),
           TextButton(
             onPressed: () {
               Navigator.pushNamed(context, AppRoutes.setPasswordScreen);

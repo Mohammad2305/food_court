@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:food_court/cores/shared/routing/app_routes.dart';
 import 'package:food_court/cores/shared/themes/app_text_styles.dart';
 import 'package:food_court/cores/utils/constants/app_assets.dart';
