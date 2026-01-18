@@ -18,6 +18,7 @@ class OrderReviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.splashColor,
+      resizeToAvoidBottomInset: false,
       appBar: GeneralAppBar(screenTitle: "Leave a Review"),
       body: ScreenLayout(
         padding: EdgeInsets.symmetric(vertical: 34.h, horizontal: 36.w),
@@ -53,7 +54,7 @@ class OrderReviewScreen extends StatelessWidget {
               hintText: "Leave Comment",
               inputController: TextEditingController(),
             ).onlyPadding(bottom: 30.h),
-            ReviewActions()
+            ReviewActions(),
           ],
         ).scrolling,
       ),

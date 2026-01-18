@@ -9,7 +9,7 @@ import '../../../../../../cores/utils/constants/app_colors.dart';
 import '../../widgets/auth_app_bar.dart';
 
 class FingerPrintSetScreen extends StatelessWidget {
-  const FingerPrintSetScreen({super.key});
+  const FingerPrintSetScreen({super.key,});
 
   @override
   Widget build(BuildContext context) {

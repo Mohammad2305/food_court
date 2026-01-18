@@ -25,11 +25,11 @@ class HomeLayout extends StatelessWidget {
                     spacing: 14.h,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      FoodCategories(),
-                      Divider(),
-                      BestSeller(),
-                      AdsCenter(),
-                      RecommendList()
+                      const FoodCategories(),
+                      const Divider(),
+                      const BestSeller(),
+                      const AdsCenter(),
+                      const RecommendList(),
                     ],
                   )
                   .onlyPadding(left: 36.w, right: 36.w, top: 34.h, bottom: 100.h)

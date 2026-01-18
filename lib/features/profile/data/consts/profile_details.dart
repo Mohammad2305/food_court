@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_court/cores/shared/routing/app_routes.dart';
 import 'package:food_court/features/profile/data/models/profile_detail.dart';
@@ -50,6 +51,9 @@ List<ProfileDetailModel> profileDetails(BuildContext context) => [
   ProfileDetailModel(
     icon: AppAssets.logoutIcon,
     title: 'Log Out',
-    onTap: () {debugPrint("Log Out");},
+    onTap: () {
+      FirebaseAuth.instance.signOut();
+      Navigator.pushNamedAndRemoveUntil(context, AppRoutes.loginScreen, (_)=>false);
+    },
   ),
 ];

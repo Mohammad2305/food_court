@@ -4,7 +4,7 @@ abstract class AuthRepo {
     required String password,
     required String email,
     required String mobileNumber,
-    required DateTime birthDate,
+    required String birthDate,
   });
 
   signInWithEmailAndPassword({required String password, required String email});

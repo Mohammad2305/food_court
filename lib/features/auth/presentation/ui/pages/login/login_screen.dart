@@ -4,7 +4,7 @@ import 'package:food_court/cores/shared/routing/app_routes.dart';
 import 'package:food_court/cores/shared/ui/widgets/screen_layout.dart';
 import 'package:food_court/cores/utils/constants/app_colors.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
-import 'package:food_court/features/auth/presentation/ui/pages/login/widgets/login_form.dart';
+import 'package:food_court/features/auth/presentation/ui/pages/login/widgets/login_bloc_listener.dart';
 import 'package:food_court/features/auth/presentation/ui/pages/login/widgets/login_welcome.dart';
 import '../../widgets/auth_app_bar.dart';
 import '../../widgets/auth_bottom.dart';
@@ -17,6 +17,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.splashColor,
+      resizeToAvoidBottomInset: false,
       appBar: AuthAppBar(screenTitle: "Log In"),
       body: ScreenLayout(
         padding: EdgeInsets.symmetric(vertical: 34.h, horizontal: 36.w),
@@ -25,10 +26,10 @@ class LoginScreen extends StatelessWidget {
           spacing: 30.h,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LoginWelcome(),
-            LoginForm(),
-            PlatformsSigns(),
-            AuthBottom(
+            const LoginWelcome(),
+            const LoginBlocListener(),
+            const PlatformsSigns(),
+            const AuthBottom(
               question: "Don’t have an account?",
               answer: "Sign Up",
               screenName: AppRoutes.registerScreen,

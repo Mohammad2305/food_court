@@ -6,7 +6,21 @@ class CustomInput extends StatelessWidget {
   final String? inputTitle;
   final TextEditingController inputController;
   final String hintText;
-  const CustomInput({super.key, this.inputTitle, required this.inputController, required this.hintText});
+  final Widget? suffixIcon;
+  final TextInputType? keyboardType;
+  final bool? readOnly;
+  final String? Function(String?)? validator;
+
+  const CustomInput({
+    super.key,
+    this.inputTitle,
+    required this.inputController,
+    required this.hintText,
+    this.suffixIcon,
+    this.keyboardType,
+    this.readOnly,
+    this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +29,21 @@ class CustomInput extends StatelessWidget {
       spacing: 3.h,
       children: [
         Text(
-          inputTitle??"",
-          style: inputTitle==null ? AppTextStyles.zero : AppTextStyles.textFtS17FW500,
+          inputTitle ?? "",
+          style: inputTitle == null
+              ? AppTextStyles.zero
+              : AppTextStyles.textFtS17FW500,
         ),
         TextFormField(
           controller: inputController,
+          validator: validator,
           decoration: InputDecoration(
             hintText: hintText,
-            hintStyle: AppTextStyles.textFtS14FW500
+            hintStyle: AppTextStyles.textFtS14FW500,
+            suffixIcon: suffixIcon,
           ),
+          keyboardType: keyboardType,
+          readOnly: readOnly ?? false,
         ),
       ],
     );

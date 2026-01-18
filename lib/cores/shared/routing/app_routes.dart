@@ -12,6 +12,7 @@ class AppRoutes{
   static const String registerScreen = "register_screen";
   static const String loginScreen = "login_screen";
   static const String setFingerPrintScreen = "set_finger_print_screen";
+  static const String forgetPassword = "forget_password_screen";
   static const String setPasswordScreen = "set_password_screen";
 
   // Layout Screens

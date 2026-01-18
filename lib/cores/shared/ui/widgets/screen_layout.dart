@@ -14,6 +14,7 @@ class ScreenLayout extends StatelessWidget {
       child: Container(
         padding: padding,
         height: height,
+        margin: EdgeInsets.zero,
         decoration: AppBoxDecoration.welcomeButton(Colors.white),
         width: double.infinity,
         child: child,

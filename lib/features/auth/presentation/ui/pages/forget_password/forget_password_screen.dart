@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
-import 'package:food_court/features/payment/presentation/ui/pages/add_card/widgets/add_card_form.dart';
-import 'package:food_court/features/payment/presentation/ui/pages/add_card/widgets/bank_card/bank_card.dart';
-import '../../../../../../cores/shared/ui/widgets/general_app_bar.dart';
 import '../../../../../../cores/shared/ui/widgets/screen_layout.dart';
 import '../../../../../../cores/utils/constants/app_colors.dart';
+import '../../widgets/auth_app_bar.dart';
+import 'widget/forget_password_listener.dart';
 
-class AddCardScreen extends StatelessWidget {
-  const AddCardScreen({super.key});
+class ForgetPasswordScreen extends StatelessWidget {
+  const ForgetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.splashColor,
       resizeToAvoidBottomInset: false,
-      appBar: GeneralAppBar(screenTitle: "Add Card"),
+      appBar: AuthAppBar(screenTitle: "Forget Password"),
       body: ScreenLayout(
         padding: EdgeInsets.symmetric(vertical: 34.h, horizontal: 36.w),
         height: 750.h,
         child: Column(
+          spacing: 30.h,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BankCard(),
-            AddCardForm(),
+            ForgetPasswordListener()
           ],
         ).scrolling,
       ),

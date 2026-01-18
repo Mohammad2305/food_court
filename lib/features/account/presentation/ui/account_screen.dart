@@ -14,6 +14,7 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.splashColor,
+      resizeToAvoidBottomInset: false,
       appBar: GeneralAppBar(screenTitle: "My profile"),
       body: ScreenLayout(
         padding: EdgeInsets.symmetric(vertical: 34.h, horizontal: 36.w),

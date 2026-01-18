@@ -3,18 +3,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_court/cores/utils/extensions/aligns.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
+import 'package:food_court/features/onboarding/presentation/ui/widgets/jump_button.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../../../../../cores/shared/routing/app_routes.dart';
 import '../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../cores/shared/themes/app_text_styles.dart';
-import '../../../../../cores/shared/ui/widgets/custom_button.dart';
 import '../../../../../cores/utils/constants/app_colors.dart';
 import '../../../data/models/onboarding_page.dart';
 
 class TextContainer extends StatelessWidget {
   final PageController pageController;
   final int currentIndex;
-  const TextContainer({super.key, required this.pageController, required this.currentIndex});
+
+  const TextContainer({
+    super.key,
+    required this.pageController,
+    required this.currentIndex,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +29,15 @@ class TextContainer extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(onboarding[currentIndex].pageIcon).onlyPadding(bottom: 20.19.h),
+          SvgPicture.asset(
+            onboarding[currentIndex].pageIcon,
+            height: 35.h,
+          ).onlyPadding(bottom: 20.19.h),
           Text(
             onboarding[currentIndex].pageTitle,
-            style: AppTextStyles.textFtS24FW900.copyWith(color: AppColors.welcomeColor),
+            style: AppTextStyles.textFtS24FW900.copyWith(
+              color: AppColors.welcomeColor,
+            ),
           ).onlyPadding(bottom: 19.h),
           Text(
             onboarding[currentIndex].pageDescription,
@@ -45,25 +54,7 @@ class TextContainer extends StatelessWidget {
               dotColor: AppColors.splashColor,
             ),
           ).onlyPadding(bottom: 23.h),
-          CustomButton(
-            onTap: (){
-              if(currentIndex<onboarding.length-1){
-                pageController.animateToPage(
-                  currentIndex+1,
-                  duration: Duration(milliseconds: 500),
-                  curve: Curves.linear,
-                );
-                debugPrint(currentIndex.toString());
-              }
-              else{
-                Navigator.pushNamedAndRemoveUntil(context, AppRoutes.welcomeScreen, (_)=>false);
-              }
-            },
-            decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),
-            textColor: AppColors.whiteText,
-            padding: EdgeInsets.symmetric(horizontal: (49.5).w, vertical: 8.h),
-            label: currentIndex==onboarding.length-1 ? "Get Started" : "Next",
-          )
+          JumpButton(pageController: pageController, currentIndex: currentIndex),
         ],
       ),
     ).bottomAligning;

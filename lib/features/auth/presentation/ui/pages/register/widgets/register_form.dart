@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/utils/extensions/aligns.dart';
+import 'package:food_court/features/auth/presentation/manager/register/register_cubit.dart';
+import 'package:food_court/features/auth/presentation/ui/pages/register/widgets/register_fields.dart';
 import '../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../../../cores/shared/ui/widgets/custom_button.dart';
-import '../../../../../../../cores/shared/ui/widgets/custom_input.dart';
 import '../../../../../../../cores/utils/constants/app_colors.dart';
-import '../../../widgets/password_input.dart';
 import 'terms_privacy.dart';
 
 class RegisterForm extends StatelessWidget {
@@ -19,30 +20,20 @@ class RegisterForm extends StatelessWidget {
       child: Column(
         spacing: 8.h,
         children: [
-          CustomInput(
-            inputTitle: "Full name",
-            hintText: "Mohammed Nasser Ali Ahmed",
-            inputController: TextEditingController(),
-          ),
-          PasswordInput(inputController: TextEditingController(),),
-          CustomInput(
-            inputTitle: "Email",
-            hintText: "example@example.com",
-            inputController: TextEditingController(),
-          ),
-          CustomInput(
-            inputTitle: "Mobile Number",
-            hintText: "+ 123 456 789",
-            inputController: TextEditingController(),
-          ),
-          CustomInput(
-            inputTitle: "Date of birth",
-            hintText: "DD/MM/YYYY",
-            inputController: TextEditingController(),
-          ),
-          TermsPrivacy(),
+          const RegisterFields(),
+          const TermsPrivacy(),
           CustomButton(
-            onTap: () {},
+            onTap: () {
+              if (registerKey.currentState!.validate()) {
+                context.read<RegisterCubit>().createAccountWithEmailAndPassword(
+                  fullName: context.read<RegisterCubit>().name.text,
+                  password: context.read<RegisterCubit>().password.text,
+                  email: context.read<RegisterCubit>().email.text,
+                  mobileNumber: context.read<RegisterCubit>().mobile.text,
+                  birthDate: context.read<RegisterCubit>().date.text,
+                );
+              }
+            },
             decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),
             width: 207.w,
             padding: EdgeInsets.symmetric(vertical: 10.h),
