@@ -18,10 +18,6 @@ class AppBoxDecoration {
   }) => BoxDecoration(
     color: background,
     borderRadius: BorderRadius.circular(radius ?? 25),
-    image: DecorationImage(
-      image: AssetImage(AppAssets.card),
-      fit: BoxFit.cover,
-    ),
   );
 
   static BoxDecoration generalCard({

@@ -16,7 +16,7 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   forgetPassword({required String email}) async{
     emit(ForgetPasswordLoading());
     try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email.trim());
+      await authRepo.forgetPassword(email: email);
       emit(ForgetPasswordSuccessful());
     } on FirebaseAuthException catch (e) {
       String error ;
@@ -41,6 +41,19 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
     }
   }
 
+  resetPassword(User user) async {
+    emit(ResetPasswordLoading());
+    try {
+      if(password.text.trim()==confirmPassword.text.trim()){
+        await authRepo.resetPassword(newPassword: password.text.trim(), user: user);
+      }
+      emit(ResetPasswordSuccessful());
+    } on FirebaseAuthException catch (e) {
+      emit(ResetPasswordError(e.code));
+    } catch (e) {
+      emit(ResetPasswordError(e.toString()));
+    }
+  }
   @override
   Future<void> close() {
     password.dispose();

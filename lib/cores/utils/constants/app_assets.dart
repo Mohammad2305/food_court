@@ -23,10 +23,6 @@ class AppAssets {
   // auth screen
   static final String gmailIcon = "$svgPath/auth/gmail.svg";
   static final String facebookIcon = "$svgPath/auth/facebook.svg";
-  static final String fingerPrintIcon = "$svgPath/auth/fingerprint.svg";
-  static final String fingerPrintGreyBig = "$svgPath/auth/fingerprint_big.svg";
-  static final String fingerPrintBig =
-      "$svgPath/auth/fingerprint_big_colored.svg";
   static final String closeEye = "$svgPath/auth/closed_eye.svg";
   static final String openEye = "$svgPath/auth/open_eye.svg";
 
@@ -77,11 +73,4 @@ class AppAssets {
 
   // profile screens => *address screen*
   static final String address = "$svgPath/address/address.svg";
-
-  // profile screens => *payment screen*
-  static final String apple = "$svgPath/payment/apple.svg";
-  static final String googlePlay = "$svgPath/payment/google_play.svg";
-  static final String payPal = "$svgPath/payment/paypal.svg";
-  static final String electricChip = "$svgPath/payment/electric_chip.svg";
-  static final String card = "$pngPath/card.png";
 }

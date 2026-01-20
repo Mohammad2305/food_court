@@ -15,7 +15,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController mobile = TextEditingController();
   TextEditingController date = TextEditingController();
 
-  createAccountWithEmailAndPassword({
+  Future<void> createAccountWithEmailAndPassword({
     required String fullName,
     required String password,
     required String email,
@@ -31,7 +31,13 @@ class RegisterCubit extends Cubit<RegisterState> {
       birthDate: birthDate,
     );
     if(result is UserCredential){
-      emit(RegisterSuccessful());
+      if(!result.user!.emailVerified){
+        emit(EmailNotVerified());
+        authRepo.emailVerify(user: result.user!);
+      }
+      else{
+        emit(RegisterSuccessful());
+      }
     }
     else{
       emit(RegisterError(result.toString()));

@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -63,6 +54,40 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1096600274988',
     projectId: 'food-court-89c2b',
     storageBucket: 'food-court-89c2b.firebasestorage.app',
+    androidClientId: '1096600274988-vumg2ukjup47vapcrv020099nicb1elk.apps.googleusercontent.com',
+    iosClientId: '1096600274988-pgtlnjcmlpogqm02objh5neuqao4c5tl.apps.googleusercontent.com',
     iosBundleId: 'com.example.foodCourt',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyAg-xyduM7BzOUJFb0hNWcz_Ru9zpIDf8k',
+    appId: '1:1096600274988:web:db96f3e2412442a737a989',
+    messagingSenderId: '1096600274988',
+    projectId: 'food-court-89c2b',
+    authDomain: 'food-court-89c2b.firebaseapp.com',
+    storageBucket: 'food-court-89c2b.firebasestorage.app',
+    measurementId: 'G-3J6QYKWP3V',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyB9qW9Ho5g-KwDhiF-G8bU3I6U3H_ZfoBw',
+    appId: '1:1096600274988:ios:75345f875642a40037a989',
+    messagingSenderId: '1096600274988',
+    projectId: 'food-court-89c2b',
+    storageBucket: 'food-court-89c2b.firebasestorage.app',
+    androidClientId: '1096600274988-vumg2ukjup47vapcrv020099nicb1elk.apps.googleusercontent.com',
+    iosClientId: '1096600274988-pgtlnjcmlpogqm02objh5neuqao4c5tl.apps.googleusercontent.com',
+    iosBundleId: 'com.example.foodCourt',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyAg-xyduM7BzOUJFb0hNWcz_Ru9zpIDf8k',
+    appId: '1:1096600274988:web:d0bdd6844efdff3d37a989',
+    messagingSenderId: '1096600274988',
+    projectId: 'food-court-89c2b',
+    authDomain: 'food-court-89c2b.firebaseapp.com',
+    storageBucket: 'food-court-89c2b.firebasestorage.app',
+    measurementId: 'G-EFK0MDDM0Q',
+  );
+
 }

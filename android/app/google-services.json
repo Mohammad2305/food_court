@@ -12,7 +12,20 @@
           "package_name": "com.example.food_court"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1096600274988-vumg2ukjup47vapcrv020099nicb1elk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.food_court",
+            "certificate_hash": "91584b73893192975732f464c2409f08cb484719"
+          }
+        },
+        {
+          "client_id": "1096600274988-gdlvenvgh2gsb5g01gv73h5qf1qbona1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCRInjYMtKTyqCr_wyWnicSVJsKMPmbLd4"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096600274988-gdlvenvgh2gsb5g01gv73h5qf1qbona1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1096600274988-pgtlnjcmlpogqm02objh5neuqao4c5tl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.foodCourt"
+              }
+            }
+          ]
         }
       }
     }

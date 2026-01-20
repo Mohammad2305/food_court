@@ -6,9 +6,6 @@ class Assets {
   static const String addressAddress = 'assets/images/svg/address/address.svg';
   static const String authClosedEye = 'assets/images/svg/auth/closed_eye.svg';
   static const String authFacebook = 'assets/images/svg/auth/facebook.svg';
-  static const String authFingerprint = 'assets/images/svg/auth/fingerprint.svg';
-  static const String authFingerprintBig = 'assets/images/svg/auth/fingerprint_big.svg';
-  static const String authFingerprintBigColored = 'assets/images/svg/auth/fingerprint_big_colored.svg';
   static const String authGmail = 'assets/images/svg/auth/gmail.svg';
   static const String authOpenEye = 'assets/images/svg/auth/open_eye.svg';
   static const String generalCallCenter = 'assets/images/svg/layout/general/call_center.svg';
@@ -33,10 +30,6 @@ class Assets {
   static const String ordersFilledStar = 'assets/images/svg/orders/filled_star.svg';
   static const String ordersOutlineStar = 'assets/images/svg/orders/outline_star.svg';
   static const String ordersSuccessCancel = 'assets/images/svg/orders/success_cancel.svg';
-  static const String paymentApple = 'assets/images/svg/payment/apple.svg';
-  static const String paymentCard = 'assets/images/svg/payment/card.svg';
-  static const String paymentGooglePlay = 'assets/images/svg/payment/google_play.svg';
-  static const String paymentPaypal = 'assets/images/svg/payment/paypal.svg';
   static const String pngCard = 'assets/images/png/card.png';
   static const String pngDeliveryImg = 'assets/images/png/delivery_img.png';
   static const String pngOrdersImg = 'assets/images/png/orders_img.png';

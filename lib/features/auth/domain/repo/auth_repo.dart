@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 abstract class AuthRepo {
   createAccountWithEmailAndPassword({
     required String fullName,
@@ -13,5 +15,12 @@ abstract class AuthRepo {
 
   signInWithFacebook();
 
-  signInWithFingerPrint();
+
+  emailVerify({required User user});
+
+  phoneNumberVerify();
+
+  forgetPassword({required String email});
+
+  resetPassword({required String newPassword, required User user});
 }

@@ -13,3 +13,12 @@ final class GoogleAuthError extends PlatformAuthState {
   final String error;
   GoogleAuthError({required this.error});
 }
+
+final class FaceBookAuthLoading extends PlatformAuthState {}
+
+final class FaceBookAuthSuccessful extends PlatformAuthState {}
+
+final class FaceBookAuthError extends PlatformAuthState {
+  final String error;
+  FaceBookAuthError({required this.error});
+}

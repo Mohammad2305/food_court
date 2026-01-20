@@ -22,7 +22,6 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void _navigate() {
-    if (!mounted) return;
     final route = FirebaseAuth.instance.currentUser != null
         ? AppRoutes.layoutScreen
         : AppRoutes.onboardingScreen;

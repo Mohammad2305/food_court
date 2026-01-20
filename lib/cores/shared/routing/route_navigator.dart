@@ -6,12 +6,12 @@ import 'package:food_court/features/auth/presentation/manager/register/register_
 import 'package:food_court/features/auth/presentation/manager/reset_password/reset_password_cubit.dart';
 import 'package:food_court/features/auth/presentation/ui/pages/forget_password/forget_password_screen.dart';
 import 'package:food_court/features/delivery_address/presentation/manager/delivery_address_cubit.dart';
-import 'package:food_court/features/payment/presentation/manager/payment_cubit.dart';
-import 'package:food_court/features/payment/presentation/ui/pages/add_card/add_card_screen.dart';
-import 'package:food_court/features/payment/presentation/ui/pages/methods/methods_screen.dart';
+import 'package:food_court/features/layout/data/repo/product_data_repo_impl.dart';
+import 'package:food_court/features/layout/presentation/manager/home_cubit/home_cubit.dart';
+import 'package:food_court/features/profile/data/repo/profile_repo_impl.dart';
+import 'package:food_court/features/profile/presentation/manager/profile_data_cubit.dart';
 import '../../../features/account/presentation/ui/account_screen.dart';
 import '../../../features/auth/data/repo/auth_repo_impl.dart';
-import '../../../features/auth/presentation/ui/pages/finger_print_set/finger_print_set_screen.dart';
 import '../../../features/auth/presentation/ui/pages/login/login_screen.dart';
 import '../../../features/auth/presentation/ui/pages/register/register_screen.dart';
 import '../../../features/auth/presentation/ui/pages/set_password/set_password_screen.dart';
@@ -80,13 +80,22 @@ class RouteNavigator {
             child: SetPasswordScreen(),
           ),
         );
-      case AppRoutes.setFingerPrintScreen:
-        return MaterialPageRoute(builder: (_) => FingerPrintSetScreen());
       // Layout Screens
       case AppRoutes.layoutScreen:
-        return MaterialPageRoute(builder: (_) => const LayoutScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => HomeCubit(ProductDataRepoImpl())..getBestSellerProducts(),
+            child: LayoutScreen(),
+          ),
+        );
       case AppRoutes.profileScreen:
-        return MaterialPageRoute(builder: (_) => const ProfileScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                ProfileDataCubit(ProfileRepoImpl())..getUserData(),
+            child: ProfileScreen(),
+          ),
+        );
       // Layout Screens => *profile screen*
       // Layout Screens => *profile screen* => *order screen*
       case AppRoutes.ordersScreen:
@@ -120,17 +129,6 @@ class RouteNavigator {
         );
       case AppRoutes.newAddressScreen:
         return MaterialPageRoute(builder: (_) => const NewAddressScreen());
-      // Layout Screens => *profile screen* => *payment screen*
-      case AppRoutes.methodsScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider<PaymentCubit>(
-            create: (context) => PaymentCubit(),
-            child: MethodsScreen(),
-          ),
-        );
-      case AppRoutes.addCardScreen:
-        return MaterialPageRoute(builder: (_) => const AddCardScreen());
-
       default:
         return MaterialPageRoute(
           builder: (_) => const Scaffold(

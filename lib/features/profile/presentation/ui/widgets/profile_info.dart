@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_court/cores/utils/extensions/paddings.dart';
+import 'package:food_court/features/profile/data/models/user_model.dart';
 import '../../../../../cores/shared/themes/app_text_styles.dart';
 import '../../../../../cores/utils/constants/app_colors.dart';
 
 class ProfileInfo extends StatelessWidget {
-  const ProfileInfo({super.key});
+  final UserModel? user;
+  const ProfileInfo({super.key, this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +16,27 @@ class ProfileInfo extends StatelessWidget {
         CircleAvatar(
           radius: 50.r,
           backgroundImage: NetworkImage(
-            "https://i.pinimg.com/1200x/22/a3/9e/22a39eaccc40ef068c6d060bbc77e8c7.jpg",
-          ),
+            "https://i.pinimg.com/736x/9e/83/75/9e837528f01cf3f42119c5aeeed1b336.jpg",
+          ) ,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Mohammed Nasser",
+              user?.name??"User Name",
               style: AppTextStyles.textFtS20FW500.copyWith(
                   color: AppColors.whiteText,
                   fontWeight: FontWeight.w900
               ),
             ),
             Text(
-              "Loremipsum@email.com",
-              style: AppTextStyles.textFtS15FW500.copyWith(color: AppColors.whiteText),
+              user?.email??"UserEmail@gamail.com",
+              style: AppTextStyles.textFtS15FW500.copyWith(
+                  color: AppColors.whiteText),
             ),
           ],
         )
       ],
-    ).onlyPadding(bottom: 35.h);
+    );
   }
 }

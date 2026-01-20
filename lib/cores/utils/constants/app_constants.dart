@@ -13,4 +13,12 @@ class AppConstants {
   static const String orders= "orders";
   static const String address= "addresses";
   static const String paymentMethods= "payment_methods";
+
+  static const String usersCollection = "users";
+  static const String foodMenuCollection = "foods";
+  static const String vegan = "vegan";
+  static const String drink = "drinks";
+  static const String meals = "meals";
+  static const String desert = "deserts";
+  static const String snacks = "snacks";
 }

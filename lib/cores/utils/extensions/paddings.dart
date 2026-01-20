@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension WidgetPadding on Widget {
   Widget symmetricPadding({double? vertical, double? horizontal}) => Padding(

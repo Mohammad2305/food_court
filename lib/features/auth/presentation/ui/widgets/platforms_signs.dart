@@ -81,21 +81,12 @@ class PlatformsSigns extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: () {
-                  debugPrint("Facebook Auth");
+                onTap: () async {
+                  await context.read<PlatformAuthCubit>().facebookAuth();
                 },
                 child: CircleAvatar(
                   backgroundColor: AppColors.iconCircle,
                   child: SvgPicture.asset(AppAssets.facebookIcon),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, AppRoutes.setFingerPrintScreen);
-                },
-                child: CircleAvatar(
-                  backgroundColor: AppColors.iconCircle,
-                  child: SvgPicture.asset(AppAssets.fingerPrintIcon),
                 ),
               ),
             ],

@@ -11,7 +11,6 @@ class AppRoutes{
   // Auth Screens
   static const String registerScreen = "register_screen";
   static const String loginScreen = "login_screen";
-  static const String setFingerPrintScreen = "set_finger_print_screen";
   static const String forgetPassword = "forget_password_screen";
   static const String setPasswordScreen = "set_password_screen";
 
@@ -35,8 +34,4 @@ class AppRoutes{
   // Layout Screens => *profile screen* => *address screen*
   static const String addressListScreen = "address_list_screen";
   static const String newAddressScreen = "new_address_screen";
-
-  // Layout Screens => *profile screen* => *payment screen*
-  static const String methodsScreen = "methods_screen";
-  static const String addCardScreen = "add_card_screen";
 }
