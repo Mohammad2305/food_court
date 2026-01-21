@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:food_court/cores/utils/constants/app_assets.dart';
-import 'package:food_court/cores/utils/extensions/aligns.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
-import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
+import 'package:food_court/features/layout/presentation/ui/layouts/home/widgets/best_sellers_list.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 import '../../../../../../../../cores/shared/themes/app_text_styles.dart';
 import '../../../../../../../../cores/utils/constants/app_colors.dart';
+import '../../../../manager/home_cubit/home_cubit.dart';
 
 class BestSeller extends StatelessWidget {
   const BestSeller({super.key});
@@ -39,40 +40,25 @@ class BestSeller extends StatelessWidget {
             ),
           ],
         ),
-        ListView.separated(
-          itemCount: 10,
-          shrinkWrap: true,
-          clipBehavior: Clip.none,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (context, index) {
-            return Stack(
-              children: [
-                Container(
-                  decoration: AppBoxDecoration.welcomeButton(AppColors.splashColor),
-                  clipBehavior: Clip.hardEdge,
-                  width: 75.w,
-                  height: 110.h,
-                  child: Image.network(
-                    AppAssets.imageSample,
-                    fit: BoxFit.cover,
-                  ),
+        BlocBuilder<HomeCubit, HomeState>(
+          builder: (context, state) {
+            if (state is ProductsDataGetLoading) {
+              return Skeletonizer(
+                effect: PulseEffect(
+                    from: AppColors.splashColor,
+                    to: AppColors.splashColor.withAlpha(100)
                 ),
-                Positioned(
-                  right: -1.w,
-                  bottom: 20.h,
-                  child: Container(
-                    decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),
-                    padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
-                    child: Text(
-                      "\$50.00",
-                      style: AppTextStyles.textFtS12FW500.copyWith(color: AppColors.whiteText),
-                    ),
-                  ),
-                ),
-              ],
-            );
+                child: BestSellersList(),
+              );
+            }
+            if (state is ProductsDataGetError) {
+              return Text(state.error, style: const TextStyle(color: Colors.red));
+            }
+            if (state is ProductsDataGetSuccessful) {
+              return BestSellersList(products: state.productModel,);
+            }
+            return const SizedBox();
           },
-          separatorBuilder: (context, index) => SizedBox(width: 6.w),
         ).sized(vertical: 120.h),
       ],
     );

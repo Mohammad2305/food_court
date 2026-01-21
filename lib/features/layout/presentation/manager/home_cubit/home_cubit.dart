@@ -13,14 +13,21 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ProductsDataGetLoading());
     try{
       final products = await productDataRepo.bestSellerProductsData();
-      if (products == null) {
-        emit(ProductsDataGetError('User data not found'));
-      } else {
-        emit(ProductsDataGetSuccessful(products));
-      }
-    }
+      emit(ProductsDataGetSuccessful(products));
+        }
     catch(e){
       emit(ProductsDataGetError(e.toString()));
+    }
+  }
+
+  Future<void> getRecommendsProducts() async{
+    emit(RecommendsProductsDataGetLoading());
+    try{
+      final products = await productDataRepo.recommendProductsData();
+      emit(RecommendsProductsDataGetSuccessful(products));
+    }
+    catch(e){
+      emit(RecommendsProductsDataGetError(e.toString()));
     }
   }
 }

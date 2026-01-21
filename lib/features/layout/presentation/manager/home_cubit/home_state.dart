@@ -16,3 +16,15 @@ final class ProductsDataGetError extends HomeState {
   final String error;
   ProductsDataGetError(this.error);
 }
+
+final class RecommendsProductsDataGetLoading extends HomeState {}
+
+final class RecommendsProductsDataGetSuccessful extends HomeState {
+  final List<ProductModel> productModel;
+  RecommendsProductsDataGetSuccessful(this.productModel);
+}
+
+final class RecommendsProductsDataGetError extends HomeState {
+  final String error;
+  RecommendsProductsDataGetError(this.error);
+}

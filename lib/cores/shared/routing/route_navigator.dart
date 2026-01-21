@@ -84,7 +84,7 @@ class RouteNavigator {
       case AppRoutes.layoutScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => HomeCubit(ProductDataRepoImpl())..getBestSellerProducts(),
+            create: (context) => HomeCubit(ProductDataRepoImpl())..getBestSellerProducts()..getRecommendsProducts(),
             child: LayoutScreen(),
           ),
         );

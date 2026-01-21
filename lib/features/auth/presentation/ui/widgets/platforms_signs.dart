@@ -27,52 +27,54 @@ class PlatformsSigns extends StatelessWidget {
             ),
           ],
         ),
-        BlocListener<PlatformAuthCubit, PlatformAuthState>(
-          listener: (context, state) {
-            if (state is GoogleAuthLoading) {
-              showDialog(
-                context: context,
-                builder: (context) => Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.welcomeColor,
-                  ),
-                ),
-              );
-            }
-            else if (state is GoogleAuthSuccessful) {
-              Navigator.pop(context); // close loading
-              Navigator.pushNamedAndRemoveUntil(context, AppRoutes.layoutScreen, (_)=>false);
-            }
-            else if (state is GoogleAuthError) {
-              Navigator.pop(context); // close loading
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    icon: Icon(
-                      Icons.error_outline_outlined,
-                      color: AppColors.welcomeColor,
-                    ),
-                    title: Text(
-                      "Error",
-                      style: AppTextStyles.textFtS20FW500,
-                    ),
-                    content: Text(
-                      state.error,
-                      style: AppTextStyles.textFtS14FW300,
-                      textAlign: TextAlign.center,
-                    ),
+        Row(
+          spacing: 9.19.w,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            BlocListener<PlatformAuthCubit, PlatformAuthState>(
+              listener: (context, state) {
+                if (state is GoogleAuthLoading) {
+                  showDialog(
+                    context: context,
+                    builder: (context) =>
+                        Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.welcomeColor,
+                          ),
+                        ),
                   );
-                },
-              );
-            }
-          },
-          child: Row(
-            spacing: 9.19.w,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
-                onTap: () async{
+                }
+                else if (state is GoogleAuthSuccessful) {
+                  Navigator.pop(context); // close loading
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, AppRoutes.layoutScreen, (_) => false);
+                }
+                else if (state is GoogleAuthError) {
+                  Navigator.pop(context); // close loading
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        icon: Icon(
+                          Icons.error_outline_outlined,
+                          color: AppColors.welcomeColor,
+                        ),
+                        title: Text(
+                          "Error",
+                          style: AppTextStyles.textFtS20FW500,
+                        ),
+                        content: Text(
+                          state.error,
+                          style: AppTextStyles.textFtS14FW300,
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    },
+                  );
+                }
+              },
+              child: InkWell(
+                onTap: () async {
                   await context.read<PlatformAuthCubit>().googleAuth();
                 },
                 child: CircleAvatar(
@@ -80,7 +82,48 @@ class PlatformsSigns extends StatelessWidget {
                   child: SvgPicture.asset(AppAssets.gmailIcon),
                 ),
               ),
-              InkWell(
+            ),
+            BlocListener<PlatformAuthCubit, PlatformAuthState>(
+              listener: (context, state) {
+                if (state is FaceBookAuthLoading) {
+                  showDialog(
+                    context: context,
+                    builder: (context) => Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.welcomeColor,
+                      ),
+                    ),
+                  );
+                }
+                else if (state is FaceBookAuthSuccessful) {
+                  Navigator.pop(context); // close loading
+                  Navigator.pushNamedAndRemoveUntil(context, AppRoutes.layoutScreen, (_)=>false);
+                }
+                else if (state is FaceBookAuthError) {
+                  Navigator.pop(context); // close loading
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        icon: Icon(
+                          Icons.error_outline_outlined,
+                          color: AppColors.welcomeColor,
+                        ),
+                        title: Text(
+                          "Error",
+                          style: AppTextStyles.textFtS20FW500,
+                        ),
+                        content: Text(
+                          state.error,
+                          style: AppTextStyles.textFtS14FW300,
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    },
+                  );
+                }
+              },
+              child: InkWell(
                 onTap: () async {
                   await context.read<PlatformAuthCubit>().facebookAuth();
                 },
@@ -89,8 +132,8 @@ class PlatformsSigns extends StatelessWidget {
                   child: SvgPicture.asset(AppAssets.facebookIcon),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );

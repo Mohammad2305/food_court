@@ -48,6 +48,7 @@ class MenuHead extends StatelessWidget {
                 //   "product_category": AppConstants.meals,
                 //   "product_stars": 4.8,
                 //   "product_orders_numbers": 420,
+                //   "product_discount": 0
                 // });
               },
             ),

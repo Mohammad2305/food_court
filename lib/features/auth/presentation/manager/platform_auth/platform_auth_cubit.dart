@@ -13,7 +13,7 @@ class PlatformAuthCubit extends Cubit<PlatformAuthState> {
     emit(GoogleAuthLoading());
     final result = await authRepo.signInWithGoogle();
     if(result is UserCredential){
-      emit(GoogleAuthSuccessful());
+      emit(GoogleAuthSuccessful(user: result.user!));
     }
     else{
       emit(GoogleAuthError(error: result.toString()));
@@ -23,8 +23,8 @@ class PlatformAuthCubit extends Cubit<PlatformAuthState> {
   Future<void> facebookAuth() async{
     emit(FaceBookAuthLoading());
     final result = await authRepo.signInWithFacebook();
-    if(result is AuthCredential){
-      emit(FaceBookAuthSuccessful());
+    if(result is UserCredential){
+      emit(FaceBookAuthSuccessful(user: result.user!));
     }
     else{
       emit(FaceBookAuthError(error: result.toString()));

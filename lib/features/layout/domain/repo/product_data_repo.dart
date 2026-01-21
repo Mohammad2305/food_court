@@ -4,4 +4,6 @@ abstract class ProductDataRepo {
   Future<List<ProductModel>> bestSellerProductsData();
 
   Future<List<ProductModel>> recommendProductsData();
+
+  Future<List<ProductModel>> discountProductsData();
 }

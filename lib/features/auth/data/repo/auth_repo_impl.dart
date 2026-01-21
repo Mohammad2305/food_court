@@ -105,7 +105,7 @@ class AuthRepoImpl extends AuthRepo {
       final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
       // Once signed in, return the UserCredential
-      return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+      return await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
     }
     on FirebaseException catch (e) {
       switch (e.code) {

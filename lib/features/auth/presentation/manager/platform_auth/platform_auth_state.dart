@@ -7,7 +7,10 @@ final class PlatformAuthInitial extends PlatformAuthState {}
 
 final class GoogleAuthLoading extends PlatformAuthState {}
 
-final class GoogleAuthSuccessful extends PlatformAuthState {}
+final class GoogleAuthSuccessful extends PlatformAuthState {
+  final User user;
+  GoogleAuthSuccessful({required this.user});
+}
 
 final class GoogleAuthError extends PlatformAuthState {
   final String error;
@@ -16,7 +19,10 @@ final class GoogleAuthError extends PlatformAuthState {
 
 final class FaceBookAuthLoading extends PlatformAuthState {}
 
-final class FaceBookAuthSuccessful extends PlatformAuthState {}
+final class FaceBookAuthSuccessful extends PlatformAuthState {
+  final User user;
+  FaceBookAuthSuccessful({required this.user});
+}
 
 final class FaceBookAuthError extends PlatformAuthState {
   final String error;
