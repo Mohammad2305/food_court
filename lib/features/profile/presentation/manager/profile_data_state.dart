@@ -16,3 +16,12 @@ final class ProfileDataError extends ProfileDataState {
   final String message;
   ProfileDataError(this.message);
 }
+
+final class UpdateProfileDataLoading extends ProfileDataState {}
+
+final class UpdateProfileDataSuccessful extends ProfileDataState {}
+
+final class UpdateProfileDataError extends ProfileDataState {
+  final String message;
+  UpdateProfileDataError(this.message);
+}

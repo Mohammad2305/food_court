@@ -32,4 +32,16 @@ class UserModel {
       completedOrders: [],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'full_name': name,
+      'email': email,
+      "birth_date": birthDay,
+      "mobile_number": phoneNumber,
+      'active_orders': activeOrders.map((e) => e.toJson()).toList(),
+      'cancelled_orders': cancelOrders.map((e) => e.toJson()).toList(),
+      'completed_orders': completedOrders.map((e) => e.toJson()).toList(),
+    };
+  }
 }

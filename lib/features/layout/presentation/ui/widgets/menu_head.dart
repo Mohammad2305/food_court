@@ -1,13 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_court/cores/shared/routing/app_routes.dart';
 import 'package:food_court/cores/utils/constants/app_constants.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
-import 'package:food_court/features/layout/presentation/manager/home_cubit/home_cubit.dart';
-import 'package:food_court/features/profile/presentation/manager/profile_data_cubit.dart';
 import '../../../../../cores/utils/constants/app_assets.dart';
 import '../../../../../cores/utils/constants/app_colors.dart';
 import 'action_item.dart';
@@ -40,16 +37,16 @@ class MenuHead extends StatelessWidget {
             ActionItem(
               iconPath: AppAssets.cartIcon,
               onTap: () {
-                context.read<HomeCubit>().getBestSellerProducts();
-                // FirebaseFirestore.instance.collection("foods").add({
-                //   "product_name": "Grilled Chicken",
-                //   "product_image": "https://i.pinimg.com/1200x/44/02/e5/4402e5754a3cc81b299e87b6777f70ee.jpg",
-                //   "product_price": 45.00,
-                //   "product_category": AppConstants.meals,
-                //   "product_stars": 4.8,
-                //   "product_orders_numbers": 420,
-                //   "product_discount": 0
-                // });
+                // context.read<HomeCubit>().getBestSellerProducts();
+                FirebaseFirestore.instance.collection("foods").add({
+                  "product_name": "Chicken Biryani",
+                  "product_image": "https://i.pinimg.com/736x/0b/dc/28/0bdc281c243a6179adb33b954540fb96.jpg",
+                  "product_price": 48.00,
+                  "product_category": AppConstants.meals,
+                  "product_stars": 4.8,
+                  "product_orders_numbers": 480,
+                  "product_discount": 0.0,
+                });
               },
             ),
             ActionItem(iconPath: AppAssets.notificationIcon, onTap: () {}),

@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
 import '../../../../../../cores/shared/ui/widgets/screen_layout.dart';
-import 'widgets/ads_center.dart';
-import 'widgets/best_seller.dart';
+import 'widgets/ads_discounts/ads_center.dart';
+import 'widgets/best_seller/best_seller.dart';
 import 'widgets/food_categories.dart';
 import 'widgets/home_head.dart';
-import 'widgets/recommend_list.dart';
+import 'widgets/recommends/recommend_list.dart';
 
 class HomeLayout extends StatelessWidget {
   const HomeLayout({super.key});

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
+import 'package:food_court/features/orders/presentation/manager/orders_cubit.dart';
 import 'package:food_court/features/orders/presentation/ui/pages/orders/layouts/active_orders/widgets/active_item_actions.dart';
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../../../../cores/utils/constants/app_colors.dart';
+import '../../widgets/empty_list.dart';
 import '../../widgets/item_info.dart';
 import '../../widgets/order_info.dart';
 
@@ -12,7 +15,9 @@ class ActiveOrdersLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return context.read<OrdersCubit>().active!.isEmpty
+        ? EmptyList(orderState: 'active',)
+        : ListView.separated(
       itemBuilder: (context, index) {
         return Row(
           spacing: 10.w,
@@ -26,7 +31,7 @@ class ActiveOrdersLayout extends StatelessWidget {
                 ),
                 clipBehavior: Clip.hardEdge,
                 child: Image.network(
-                  "https://i.pinimg.com/736x/4c/04/f0/4c04f0cb3399d2c2792e14e52cc5ba82.jpg",
+                  context.read<OrdersCubit>().active![index].productImage,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -35,8 +40,8 @@ class ActiveOrdersLayout extends StatelessWidget {
               spacing: 5.h,
               children: [
                 ItemInfo(
-                  itemName: "Strawberry shake",
-                  itemPrice: 20,
+                  itemName: context.read<OrdersCubit>().active![index].productName,
+                  itemPrice: context.read<OrdersCubit>().active![index].productPrice,
                 ),
                 OrderInfo(
                   itemCount: 2,
@@ -50,7 +55,7 @@ class ActiveOrdersLayout extends StatelessWidget {
       },
       separatorBuilder: (context, index) => Divider(),
       shrinkWrap: true,
-      itemCount: 2,
+      itemCount: context.read<OrdersCubit>().active!.length,
     );
   }
 }

@@ -6,6 +6,9 @@ class AppAssets {
   static final String imageSample =
       "https://i.pinimg.com/1200x/84/d2/45/84d245e9d2151abe3ed9bbf8fff8b587.jpg";
 
+  static final String noImageProfile =
+      "https://i.pinimg.com/736x/9e/83/75/9e837528f01cf3f42119c5aeeed1b336.jpg";
+
   // splash screen
   static final String splash = "$svgPath/logo.svg";
 

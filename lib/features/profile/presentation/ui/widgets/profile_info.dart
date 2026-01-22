@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/features/profile/data/models/user_model.dart';
 import '../../../../../cores/shared/themes/app_text_styles.dart';
 import '../../../../../cores/utils/constants/app_colors.dart';
@@ -16,7 +17,7 @@ class ProfileInfo extends StatelessWidget {
         CircleAvatar(
           radius: 50.r,
           backgroundImage: NetworkImage(
-            "https://i.pinimg.com/736x/9e/83/75/9e837528f01cf3f42119c5aeeed1b336.jpg",
+            AppAssets.noImageProfile,
           ) ,
         ),
         Column(

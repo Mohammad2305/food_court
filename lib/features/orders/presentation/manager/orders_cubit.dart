@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
 part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
-  OrdersCubit() : super(OrdersInitial());
+  List<dynamic>? active;
+  List<dynamic>? cancelled;
+  List<dynamic>? completed;
+
+  OrdersCubit({this.active, this.cancelled, this.completed}) : super(OrdersInitial());
 
   int currentIndex = 0;
 

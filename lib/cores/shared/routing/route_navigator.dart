@@ -6,8 +6,10 @@ import 'package:food_court/features/auth/presentation/manager/register/register_
 import 'package:food_court/features/auth/presentation/manager/reset_password/reset_password_cubit.dart';
 import 'package:food_court/features/auth/presentation/ui/pages/forget_password/forget_password_screen.dart';
 import 'package:food_court/features/delivery_address/presentation/manager/delivery_address_cubit.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
 import 'package:food_court/features/layout/data/repo/product_data_repo_impl.dart';
 import 'package:food_court/features/layout/presentation/manager/home_cubit/home_cubit.dart';
+import 'package:food_court/features/profile/data/models/user_model.dart';
 import 'package:food_court/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:food_court/features/profile/presentation/manager/profile_data_cubit.dart';
 import '../../../features/account/presentation/ui/account_screen.dart';
@@ -84,7 +86,7 @@ class RouteNavigator {
       case AppRoutes.layoutScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => HomeCubit(ProductDataRepoImpl())..getBestSellerProducts()..getRecommendsProducts(),
+            create: (context) => HomeCubit(ProductDataRepoImpl())..loadData(),
             child: LayoutScreen(),
           ),
         );
@@ -99,9 +101,14 @@ class RouteNavigator {
       // Layout Screens => *profile screen*
       // Layout Screens => *profile screen* => *order screen*
       case AppRoutes.ordersScreen:
+        final args = settings.arguments as UserModel;
         return MaterialPageRoute(
           builder: (context) => BlocProvider<OrdersCubit>(
-            create: (context) => OrdersCubit(),
+            create: (context) => OrdersCubit(
+              active: args.activeOrders,
+              cancelled: args.cancelOrders,
+              completed: args.completedOrders,
+            ),
             child: OrdersScreen(),
           ),
         );
@@ -118,7 +125,12 @@ class RouteNavigator {
         return MaterialPageRoute(builder: (_) => const OrderReviewScreen());
       // Layout Screens => *profile screen* => *account screen*
       case AppRoutes.accountScreen:
-        return MaterialPageRoute(builder: (_) => const AccountScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => ProfileDataCubit(ProfileRepoImpl())..getUserData(),
+            child: AccountScreen(),
+          ),
+        );
       // Layout Screens => *profile screen* => *account screen*
       case AppRoutes.addressListScreen:
         return MaterialPageRoute(

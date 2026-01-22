@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:food_court/features/auth/domain/repo/auth_repo.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepoImpl extends AuthRepo {
@@ -26,7 +27,7 @@ class AuthRepoImpl extends AuthRepo {
             "mobile_number": mobileNumber,
             "birth_date": birthDate,
             "image": null,
-            "orders": {"active": [], "completed": [], "cancelled": []},
+            "orders": {"active": <ProductModel>[], "completed": <ProductModel>[], "cancelled": <ProductModel>[]},
             "addresses": [],
           });
       // final user = userCredential.user;
@@ -166,7 +167,7 @@ class AuthRepoImpl extends AuthRepo {
           "email": user.email,
           "mobile_number": user.phoneNumber,
           "image": user.photoURL,
-          "orders": {"active": [], "completed": [], "cancelled": []},
+          "orders": {"active": <ProductModel>[], "completed": <ProductModel>[], "cancelled": <ProductModel>[]},
           "addresses": [],
           "created_at": FieldValue.serverTimestamp(),
         });

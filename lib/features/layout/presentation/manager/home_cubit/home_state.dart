@@ -5,26 +5,21 @@ sealed class HomeState {}
 
 final class HomeInitial extends HomeState {}
 
-final class ProductsDataGetLoading extends HomeState {}
+class HomeLoading extends HomeState {}
 
-final class ProductsDataGetSuccessful extends HomeState {
-  final List<ProductModel> productModel;
-  ProductsDataGetSuccessful(this.productModel);
+class HomeSuccessful extends HomeState {
+  final List<ProductModel> bestSeller;
+  final List<ProductModel> recommends;
+  final List<ProductModel> adsDiscounts;
+
+  HomeSuccessful({
+    required this.bestSeller,
+    required this.recommends,
+    required this.adsDiscounts
+  });
 }
 
-final class ProductsDataGetError extends HomeState {
-  final String error;
-  ProductsDataGetError(this.error);
-}
-
-final class RecommendsProductsDataGetLoading extends HomeState {}
-
-final class RecommendsProductsDataGetSuccessful extends HomeState {
-  final List<ProductModel> productModel;
-  RecommendsProductsDataGetSuccessful(this.productModel);
-}
-
-final class RecommendsProductsDataGetError extends HomeState {
-  final String error;
-  RecommendsProductsDataGetError(this.error);
+class HomeError extends HomeState {
+  final String message;
+  HomeError(this.message);
 }

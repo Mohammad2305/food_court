@@ -7,27 +7,30 @@ part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   ProductDataRepo productDataRepo;
+
   HomeCubit(this.productDataRepo) : super(HomeInitial());
 
-  Future<void> getBestSellerProducts() async{
-    emit(ProductsDataGetLoading());
-    try{
-      final products = await productDataRepo.bestSellerProductsData();
-      emit(ProductsDataGetSuccessful(products));
-        }
-    catch(e){
-      emit(ProductsDataGetError(e.toString()));
-    }
-  }
+  List<ProductModel> bestSeller = [];
+  List<ProductModel> recommends = [];
+  List<ProductModel> adsDiscounts = [];
 
-  Future<void> getRecommendsProducts() async{
-    emit(RecommendsProductsDataGetLoading());
-    try{
-      final products = await productDataRepo.recommendProductsData();
-      emit(RecommendsProductsDataGetSuccessful(products));
-    }
-    catch(e){
-      emit(RecommendsProductsDataGetError(e.toString()));
+  Future<void> loadData() async {
+    emit(HomeLoading());
+
+    try {
+      bestSeller = await productDataRepo.bestSellerProductsData();
+      recommends = await productDataRepo.recommendProductsData();
+      adsDiscounts = await productDataRepo.discountProductsData();
+
+      emit(
+        HomeSuccessful(
+          bestSeller: bestSeller,
+          recommends: recommends,
+          adsDiscounts: adsDiscounts,
+        ),
+      );
+    } catch (e) {
+      emit(HomeError(e.toString()));
     }
   }
 }

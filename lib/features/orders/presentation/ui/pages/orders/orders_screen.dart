@@ -32,7 +32,8 @@ class OrdersScreen extends StatelessWidget {
                   },
                 ),
                 Expanded(
-                  child: orderStates[context.watch<OrdersCubit>().currentIndex].orderList,
+                  child: orderStates[context.watch<OrdersCubit>().currentIndex]
+                      .orderList,
                 ),
               ],
             );

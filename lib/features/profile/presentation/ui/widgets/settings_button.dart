@@ -12,21 +12,26 @@ class SettingsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: profileDetailModel.onTap,
-      contentPadding: EdgeInsets.symmetric(vertical: 2.5.h, horizontal: 5.w),
-      shape: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(20.r),
-        borderSide: BorderSide.none
-      ),
-      leading: Container(
-        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-        decoration: AppBoxDecoration.general(AppColors.whiteText, 15.r),
-        child: SvgPicture.asset(profileDetailModel.icon, width: 25.w,),
-      ),
-      title: Text(
-        profileDetailModel.title,
-        style: AppTextStyles.textFtS15FW500.copyWith(color: AppColors.whiteText),
+    return Container(
+      decoration: AppBoxDecoration.welcomeButton(AppColors.splashColor),
+      padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+      margin: EdgeInsets.symmetric(vertical: 5.h),
+      child: ListTile(
+        onTap: profileDetailModel.onTap,
+        contentPadding: EdgeInsets.symmetric(vertical: 2.5.h, horizontal: 5.w),
+        shape: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.r),
+          borderSide: BorderSide.none
+        ),
+        leading: Container(
+          padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
+          decoration: AppBoxDecoration.general(AppColors.whiteText, 15.r),
+          child: SvgPicture.asset(profileDetailModel.icon, width: 25.w,),
+        ),
+        title: Text(
+          profileDetailModel.title,
+          style: AppTextStyles.textFtS15FW500.copyWith(color: AppColors.welcomeColor),
+        ),
       ),
     );
   }
