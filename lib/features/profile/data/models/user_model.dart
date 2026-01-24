@@ -1,3 +1,4 @@
+import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/constants/app_constants.dart';
 
 class UserModel {
@@ -23,13 +24,14 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      name: json[AppConstants.fullName],
-      email: json[AppConstants.email],
-      phoneNumber: json[AppConstants.mobileNumber],
-      birthDay: json[AppConstants.birthDay],
-      activeOrders: [],
-      cancelOrders: [],
-      completedOrders: [],
+      name: json[AppConstants.fullName]?.toString() ?? '',
+      email: json[AppConstants.email]?.toString() ?? '',
+      phoneNumber: json[AppConstants.mobileNumber]?.toString() ?? '',
+      image: json[AppConstants.image]?.toString() ?? AppAssets.noImageProfile,
+      birthDay: json[AppConstants.birthDay]?.toString() ?? '',
+      activeOrders: List<String>.from(json['activeOrders'] ?? []),
+      cancelOrders: List<String>.from(json['cancelOrders'] ?? []),
+      completedOrders: List<String>.from(json['completedOrders'] ?? []),
     );
   }
 
@@ -39,6 +41,7 @@ class UserModel {
       'email': email,
       "birth_date": birthDay,
       "mobile_number": phoneNumber,
+      "image": image,
       'active_orders': activeOrders.map((e) => e.toJson()).toList(),
       'cancelled_orders': cancelOrders.map((e) => e.toJson()).toList(),
       'completed_orders': completedOrders.map((e) => e.toJson()).toList(),

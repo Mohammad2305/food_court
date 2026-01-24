@@ -1,8 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_court/cores/utils/constants/app_constants.dart';
 import 'package:food_court/features/profile/domain/repo/profile_repo.dart';
+import 'package:http/http.dart' as http;
 import '../models/user_model.dart';
 
 class ProfileRepoImpl extends ProfileRepo {
@@ -16,8 +19,7 @@ class ProfileRepoImpl extends ProfileRepo {
         .doc(user.uid)
         .get();
 
-    if (!doc.exists || doc.data() == null) return null;
-
+    debugPrint(doc.data().toString());
     return UserModel.fromJson(doc.data()!);
   }
 
@@ -46,4 +48,39 @@ class ProfileRepoImpl extends ProfileRepo {
       rethrow;
     }
   }
+
+  @override
+  Future<String?> uploadToCloudinary({required File imageFile}) async {
+    const cloudName = 'dkn7qb8dr';
+    const uploadPreset = 'FoodCourt';
+
+    final request = http.MultipartRequest(
+      'POST',
+      Uri.parse('https://api.cloudinary.com/v1_1/$cloudName/image/upload'),
+    );
+
+    request.fields['upload_preset'] = uploadPreset;
+    request.files.add(
+      await http.MultipartFile.fromPath('file', imageFile.path),
+    );
+
+    debugPrint("________________________________________________");
+    debugPrint('Image path: ${imageFile.path}');
+    debugPrint('File exists: ${imageFile.existsSync()}');
+    debugPrint("________________________________________________");
+
+    final response = await request.send();
+    final resStr = await response.stream.bytesToString();
+
+    if (response.statusCode == 200) {
+      final data = jsonDecode(resStr);
+      return data['secure_url']; // ✅ SUCCESS
+    } else {
+      debugPrint('Cloudinary upload failed');
+      debugPrint('Status code: ${response.statusCode}');
+      debugPrint('Response: $resStr');
+      return null;
+    }
+  }
 }
+

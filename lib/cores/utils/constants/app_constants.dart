@@ -10,7 +10,6 @@ class AppConstants {
   static const String mobileNumber = "mobile_number";
   static const String birthDay= "birth_date";
   static const String image = "image";
-  static const String orders= "orders";
   static const String address= "addresses";
   static const String paymentMethods= "payment_methods";
 

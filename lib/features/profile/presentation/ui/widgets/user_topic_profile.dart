@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_court/cores/utils/constants/app_constants.dart';
 import 'package:food_court/features/profile/presentation/ui/widgets/settings_button.dart';
 import '../../../../../cores/shared/routing/app_routes.dart';
 import '../../../../../cores/utils/constants/app_assets.dart';
@@ -7,8 +6,7 @@ import '../../../data/models/profile_detail.dart';
 import '../../../data/models/user_model.dart';
 
 class UserTopicProfile extends StatelessWidget {
-  final UserModel? user;
-  const UserTopicProfile({super.key, this.user});
+  const UserTopicProfile({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class UserTopicProfile extends StatelessWidget {
             icon: AppAssets.shoppingIcon,
             title: 'My Orders',
             onTap: () {
-              Navigator.pushNamed(context, AppRoutes.ordersScreen, arguments: user);
+              Navigator.pushNamed(context, AppRoutes.ordersScreen,);
             },
           ),
         ),

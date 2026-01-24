@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
+import 'package:food_court/features/profile/data/models/user_model.dart';
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../../../../cores/utils/constants/app_colors.dart';
 import '../../../../../manager/orders_cubit.dart';
@@ -11,11 +12,12 @@ import '../../widgets/order_info.dart';
 import 'widgets/cancelled_item_actions.dart';
 
 class CancelledOrdersLayout extends StatelessWidget {
-  const CancelledOrdersLayout({super.key});
+  final UserModel? user;
+  const CancelledOrdersLayout({super.key, this.user});
 
   @override
   Widget build(BuildContext context) {
-    return context.read<OrdersCubit>().cancelled!.isEmpty
+    return (user?.activeOrders??[]).isEmpty
         ? EmptyList(orderState: 'cancelled',)
         : ListView.separated(
             itemBuilder: (context, index) {

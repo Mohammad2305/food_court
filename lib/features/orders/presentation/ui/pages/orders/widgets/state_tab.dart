@@ -10,7 +10,7 @@ class StateTab extends StatelessWidget {
   final int currentIndex;
   final void Function(int index) onTap;
 
-  const StateTab({super.key, required this.currentIndex, required this.onTap});
+  const StateTab({super.key, required this.currentIndex, required this.onTap,});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class StateTab extends StatelessWidget {
                   : AppColors.welcomeColor.withAlpha(100),
             ),
             child: Text(
-              orderStates[index].state,
+              orderStates()[index].state,
               style: AppTextStyles.textFtS17FW500.copyWith(
                 color: index == currentIndex
                     ? AppColors.whiteText
@@ -43,7 +43,7 @@ class StateTab extends StatelessWidget {
         );
       },
       separatorBuilder: (context, index) => SizedBox(width: 3.w),
-      itemCount: orderStates.length,
+      itemCount: orderStates().length,
     ).sized(vertical: 30.h);
   }
 }

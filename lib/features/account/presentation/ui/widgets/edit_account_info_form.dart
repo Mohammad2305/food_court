@@ -25,7 +25,7 @@ class EditAccountInfoForm extends StatelessWidget {
           child: Column(
             spacing: 30.h,
             children: [
-              ProfileImage(scaffoldKey: scaffoldKey, user: user,),
+              ProfileImage(image: context.read<ProfileDataCubit>().image, scaffoldKey: scaffoldKey,).onlyPadding(bottom: 35.h),
               CustomInput(
                 inputTitle: "Full Name",
                 hintText: user?.name ?? "No Name",
@@ -39,6 +39,7 @@ class EditAccountInfoForm extends StatelessWidget {
               CustomInput(
                 inputTitle: "Email",
                 hintText: user?.email ?? "example@example.com",
+                readOnly: true,
                 inputController: context.read<ProfileDataCubit>().email,
               ),
               CustomInput(

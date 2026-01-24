@@ -27,7 +27,9 @@ class AuthRepoImpl extends AuthRepo {
             "mobile_number": mobileNumber,
             "birth_date": birthDate,
             "image": null,
-            "orders": {"active": <ProductModel>[], "completed": <ProductModel>[], "cancelled": <ProductModel>[]},
+            "active": <ProductModel>[],
+            "completed": <ProductModel>[],
+            "cancelled": <ProductModel>[],
             "addresses": [],
           });
       // final user = userCredential.user;
@@ -103,12 +105,14 @@ class AuthRepoImpl extends AuthRepo {
       final LoginResult loginResult = await FacebookAuth.instance.login();
 
       // Create a credential from the access token
-      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
       // Once signed in, return the UserCredential
-      return await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-    }
-    on FirebaseException catch (e) {
+      return await FirebaseAuth.instance.signInWithCredential(
+        facebookAuthCredential,
+      );
+    } on FirebaseException catch (e) {
       switch (e.code) {
         case 'account-exists-with-different-credential':
           return 'Account exists with another sign-in method';
@@ -140,7 +144,8 @@ class AuthRepoImpl extends AuthRepo {
       }
 
       // 2️⃣ Get auth details
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
       // 3️⃣ Create Firebase credential
       final credential = GoogleAuthProvider.credential(
@@ -165,11 +170,11 @@ class AuthRepoImpl extends AuthRepo {
         await userDoc.set({
           "full_name": user.displayName ?? "No Name",
           "email": user.email,
-          "mobile_number": user.phoneNumber,
           "image": user.photoURL,
-          "orders": {"active": <ProductModel>[], "completed": <ProductModel>[], "cancelled": <ProductModel>[]},
+          "active": <ProductModel>[],
+          "completed": <ProductModel>[],
+          "cancelled": <ProductModel>[],
           "addresses": [],
-          "created_at": FieldValue.serverTimestamp(),
         });
       }
 

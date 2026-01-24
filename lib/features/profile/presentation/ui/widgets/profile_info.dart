@@ -17,7 +17,7 @@ class ProfileInfo extends StatelessWidget {
         CircleAvatar(
           radius: 50.r,
           backgroundImage: NetworkImage(
-            AppAssets.noImageProfile,
+            user?.image ?? AppAssets.noImageProfile,
           ) ,
         ),
         Column(

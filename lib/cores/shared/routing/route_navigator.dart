@@ -101,15 +101,13 @@ class RouteNavigator {
       // Layout Screens => *profile screen*
       // Layout Screens => *profile screen* => *order screen*
       case AppRoutes.ordersScreen:
-        final args = settings.arguments as UserModel;
         return MaterialPageRoute(
           builder: (context) => BlocProvider<OrdersCubit>(
-            create: (context) => OrdersCubit(
-              active: args.activeOrders,
-              cancelled: args.cancelOrders,
-              completed: args.completedOrders,
+            create: (context) => OrdersCubit(),
+            child: BlocProvider(
+              create: (context) => ProfileDataCubit(ProfileRepoImpl())..getUserData(),
+              child: OrdersScreen(),
             ),
-            child: OrdersScreen(),
           ),
         );
       case AppRoutes.cancelOrdersScreen:
@@ -127,7 +125,8 @@ class RouteNavigator {
       case AppRoutes.accountScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => ProfileDataCubit(ProfileRepoImpl())..getUserData(),
+            create: (context) =>
+                ProfileDataCubit(ProfileRepoImpl())..getUserData(),
             child: AccountScreen(),
           ),
         );

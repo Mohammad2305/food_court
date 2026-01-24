@@ -6,16 +6,18 @@ import 'package:food_court/features/orders/presentation/ui/pages/orders/layouts/
 import 'package:food_court/features/orders/presentation/ui/pages/orders/widgets/empty_list.dart';
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../../../../cores/utils/constants/app_colors.dart';
+import '../../../../../../../profile/data/models/user_model.dart';
 import '../../../../../manager/orders_cubit.dart';
 import '../../widgets/item_info.dart';
 import '../../widgets/order_info.dart';
 
 class CompletedOrdersLayout extends StatelessWidget {
-  const CompletedOrdersLayout({super.key});
+  final UserModel? user;
+  const CompletedOrdersLayout({super.key, this.user});
 
   @override
   Widget build(BuildContext context) {
-    return context.read<OrdersCubit>().active!.isEmpty
+    return (user?.completedOrders??[]).isEmpty
         ? EmptyList(orderState: 'completed',)
         : ListView.separated(
             itemBuilder: (context, index) {

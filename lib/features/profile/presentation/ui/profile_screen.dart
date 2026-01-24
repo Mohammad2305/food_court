@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/utils/constants/app_colors.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
-import 'package:food_court/features/profile/presentation/ui/widgets/profile_details_luser_topic.dart';
+import 'package:food_court/features/profile/presentation/ui/widgets/profile_details_user_topic.dart';
 import 'package:food_court/features/profile/presentation/ui/widgets/profile_info_listener.dart';
 
 class ProfileScreen extends StatelessWidget {
