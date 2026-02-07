@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/features/orders/presentation/ui/pages/orders/layouts/completed_orders/widgets/completed_item_actions.dart';
@@ -7,18 +6,18 @@ import 'package:food_court/features/orders/presentation/ui/pages/orders/widgets/
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../../../../cores/utils/constants/app_colors.dart';
 import '../../../../../../../profile/data/models/user_model.dart';
-import '../../../../../manager/orders_cubit.dart';
 import '../../widgets/item_info.dart';
 import '../../widgets/order_info.dart';
 
 class CompletedOrdersLayout extends StatelessWidget {
   final UserModel? user;
+
   const CompletedOrdersLayout({super.key, this.user});
 
   @override
   Widget build(BuildContext context) {
-    return (user?.completedOrders??[]).isEmpty
-        ? EmptyList(orderState: 'completed',)
+    return (user?.completedOrders ?? []).isEmpty
+        ? EmptyList(orderState: 'completed')
         : ListView.separated(
             itemBuilder: (context, index) {
               return Row(
@@ -33,10 +32,7 @@ class CompletedOrdersLayout extends StatelessWidget {
                       ),
                       clipBehavior: Clip.hardEdge,
                       child: Image.network(
-                        context
-                            .read<OrdersCubit>()
-                            .completed![index]
-                            .productImage,
+                        user?.completedOrders[index].productImage,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -45,14 +41,8 @@ class CompletedOrdersLayout extends StatelessWidget {
                     spacing: 5.h,
                     children: [
                       ItemInfo(
-                        itemName: context
-                            .read<OrdersCubit>()
-                            .completed![index]
-                            .productName,
-                        itemPrice: context
-                            .read<OrdersCubit>()
-                            .completed![index]
-                            .productPrice,
+                        itemName: user?.completedOrders[index].productName,
+                        itemPrice: user?.completedOrders[index].productPrice,
                       ),
                       OrderInfo(itemCount: 2, dateTime: DateTime.now()),
                       CompletedItemActions(index: index),
@@ -63,7 +53,7 @@ class CompletedOrdersLayout extends StatelessWidget {
             },
             separatorBuilder: (context, index) => Divider(),
             shrinkWrap: true,
-            itemCount: 2,
+            itemCount: user!.completedOrders.length,
           );
   }
 }

@@ -28,8 +28,8 @@ class BestSellerItem extends StatelessWidget {
                 ),
         ),
         Positioned(
-          right: -1.w,
-          bottom: 20.h,
+          right: 5.w,
+          bottom: 15.h,
           child: Container(
             decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),
             padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),

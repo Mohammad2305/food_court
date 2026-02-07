@@ -6,8 +6,10 @@ import '../../../../../cores/utils/constants/app_colors.dart';
 class GeneralAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? screenTitle;
   final Color? iconColor;
+  final bool? isCenter;
+  final double? fontSize;
 
-  const GeneralAppBar({super.key, this.screenTitle, this.iconColor});
+  const GeneralAppBar({super.key, this.screenTitle, this.iconColor, this.isCenter, this.fontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +24,10 @@ class GeneralAppBar extends StatelessWidget implements PreferredSizeWidget {
         textAlign: TextAlign.center,
         style: AppTextStyles.textFtS28FW700.copyWith(
           color: AppColors.whiteText,
+          fontSize: fontSize ?? 28.sp
         ),
       ),
-      centerTitle: true,
+      centerTitle: isCenter ?? true,
       leading: IconButton(
         onPressed: (){
           Navigator.pop(context);

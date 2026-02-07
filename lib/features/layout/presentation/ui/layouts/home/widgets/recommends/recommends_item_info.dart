@@ -46,13 +46,13 @@ class RecommendsItemInfo extends StatelessWidget {
               decoration: AppBoxDecoration.welcomeButton(AppColors.whiteText),
               padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
               child: Icon(
-                Icons.favorite,
+                Icons.favorite_border,
                 color: AppColors.welcomeColor,
                 size: 15.sp,
               ),
             ),
           ],
-        ).symmetricPadding(horizontal: 10.w),
+        ),
         Container(
           decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),
           padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
@@ -64,6 +64,6 @@ class RecommendsItemInfo extends StatelessWidget {
           ),
         ).rightAligning,
       ],
-    ).symmetricPadding(vertical: 10.h);
+    ).symmetricPadding(vertical: 10.h, horizontal: 10.w);
   }
 }

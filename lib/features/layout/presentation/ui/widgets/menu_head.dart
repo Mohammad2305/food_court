@@ -21,7 +21,7 @@ class MenuHead extends StatelessWidget {
           spacing: 8.w,
           children: [
             SizedBox(
-              width: 200.w,
+              width: 180.w,
               height: 30.h,
               child: SearchBar(
                 trailing: {

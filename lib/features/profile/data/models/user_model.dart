@@ -29,9 +29,9 @@ class UserModel {
       phoneNumber: json[AppConstants.mobileNumber]?.toString() ?? '',
       image: json[AppConstants.image]?.toString() ?? AppAssets.noImageProfile,
       birthDay: json[AppConstants.birthDay]?.toString() ?? '',
-      activeOrders: List<String>.from(json['activeOrders'] ?? []),
-      cancelOrders: List<String>.from(json['cancelOrders'] ?? []),
-      completedOrders: List<String>.from(json['completedOrders'] ?? []),
+      activeOrders: List<String>.from(json['active'] ?? []),
+      cancelOrders: List<String>.from(json['cancelled'] ?? []),
+      completedOrders: List<String>.from(json['completed'] ?? []),
     );
   }
 
@@ -42,9 +42,9 @@ class UserModel {
       "birth_date": birthDay,
       "mobile_number": phoneNumber,
       "image": image,
-      'active_orders': activeOrders.map((e) => e.toJson()).toList(),
-      'cancelled_orders': cancelOrders.map((e) => e.toJson()).toList(),
-      'completed_orders': completedOrders.map((e) => e.toJson()).toList(),
+      'active': activeOrders.map((e) => e.toJson()).toList(),
+      'cancelled': cancelOrders.map((e) => e.toJson()).toList(),
+      'completed': completedOrders.map((e) => e.toJson()).toList(),
     };
   }
 }

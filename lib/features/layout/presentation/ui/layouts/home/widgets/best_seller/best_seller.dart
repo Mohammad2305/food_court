@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court/cores/shared/routing/app_routes.dart';
 import '../../../../../../../../../cores/shared/themes/app_text_styles.dart';
 import '../../../../../../../../../cores/utils/constants/app_colors.dart';
 import 'best_seller_bloc_builder.dart';
@@ -17,7 +18,9 @@ class BestSeller extends StatelessWidget {
           children: [
             Text("Best Seller", style: AppTextStyles.textFtS20FW500),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.bestSellerScreen);
+              },
               child: Row(
                 children: [
                   Text(

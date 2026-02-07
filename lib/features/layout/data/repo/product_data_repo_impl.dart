@@ -6,7 +6,7 @@ import '../../../../cores/utils/constants/app_constants.dart';
 
 class ProductDataRepoImpl extends ProductDataRepo {
   @override
-  Future<List<ProductModel>> bestSellerProductsData() async {
+  Future<List<ProductModel>> bestSellerProductsData({required int count}) async {
     final querySnapshot = await FirebaseFirestore.instance
         .collection(AppConstants.foodMenuCollection)
         .get();
@@ -37,7 +37,7 @@ class ProductDataRepoImpl extends ProductDataRepo {
       }
     }
 
-    return products.sublist(0, 6);
+    return products.sublist(0, count);
   }
 
   @override
@@ -70,7 +70,7 @@ class ProductDataRepoImpl extends ProductDataRepo {
       }
     }
 
-    return products.sublist(0, 6);
+    return products.sublist(0, 10);
   }
 
   @override

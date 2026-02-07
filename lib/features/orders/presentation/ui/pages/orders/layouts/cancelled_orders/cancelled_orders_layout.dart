@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/features/profile/data/models/user_model.dart';
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../../../../cores/utils/constants/app_colors.dart';
-import '../../../../../manager/orders_cubit.dart';
 import '../../widgets/empty_list.dart';
 import '../../widgets/item_info.dart';
 import '../../widgets/order_info.dart';
@@ -17,7 +15,8 @@ class CancelledOrdersLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (user?.activeOrders??[]).isEmpty
+    debugPrint(user?.cancelOrders.toString());
+    return (user?.cancelOrders??[]).isEmpty
         ? EmptyList(orderState: 'cancelled',)
         : ListView.separated(
             itemBuilder: (context, index) {
@@ -33,10 +32,7 @@ class CancelledOrdersLayout extends StatelessWidget {
                       ),
                       clipBehavior: Clip.hardEdge,
                       child: Image.network(
-                        context
-                            .read<OrdersCubit>()
-                            .cancelled![index]
-                            .productImage,
+                        user?.cancelOrders[index].productImage,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -45,16 +41,12 @@ class CancelledOrdersLayout extends StatelessWidget {
                     spacing: 5.h,
                     children: [
                       ItemInfo(
-                        itemName: context
-                            .read<OrdersCubit>()
-                            .cancelled![index]
+                        itemName: user?.cancelOrders[index]
                             .productName,
                         itemPrice: 20,
                       ),
                       OrderInfo(
-                        itemCount: context
-                            .read<OrdersCubit>()
-                            .cancelled![index]
+                        itemCount: user?.cancelOrders[index]
                             .productPrice,
                         dateTime: DateTime.now(),
                       ),
@@ -66,7 +58,7 @@ class CancelledOrdersLayout extends StatelessWidget {
             },
             separatorBuilder: (context, index) => Divider(),
             shrinkWrap: true,
-            itemCount: 2,
+            itemCount: user!.cancelOrders.length,
           );
   }
 }

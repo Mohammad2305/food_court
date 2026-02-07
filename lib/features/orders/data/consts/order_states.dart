@@ -9,14 +9,14 @@ import '../../presentation/ui/pages/orders/layouts/active_orders/active_orders_l
 List<OrderStateModel> orderStates({UserModel? user}) => [
   OrderStateModel(
     state: AppConstants.activeOrders.firstCharacterUpper,
-    orderList: ActiveOrdersLayout(),
+    orderList: ActiveOrdersLayout(user: user,),
   ),
   OrderStateModel(
     state: AppConstants.completedOrders.firstCharacterUpper,
-    orderList: CompletedOrdersLayout(),
+    orderList: CompletedOrdersLayout(user: user,),
   ),
   OrderStateModel(
     state: AppConstants.cancelledOrders.firstCharacterUpper,
-    orderList: CancelledOrdersLayout(),
+    orderList: CancelledOrdersLayout(user: user,),
   ),
 ];

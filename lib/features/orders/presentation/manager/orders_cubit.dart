@@ -4,11 +4,7 @@ import 'package:food_court/features/layout/data/models/product_model.dart';
 part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
-  List<dynamic>? active;
-  List<dynamic>? cancelled;
-  List<dynamic>? completed;
-
-  OrdersCubit({this.active, this.cancelled, this.completed}) : super(OrdersInitial());
+  OrdersCubit() : super(OrdersInitial());
 
   int currentIndex = 0;
 

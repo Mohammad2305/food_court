@@ -16,9 +16,11 @@ class AppRoutes{
 
   // Layout Screens
   static const String layoutScreen = "layout_screen";
+  static const String bestSellerScreen = "best_seller_screen";
   static const String profileScreen = "profile_screen";
   static const String notificationScreen = "notification_screen";
   static const String cartScreen = "cart_screen";
+  static const String productScreen = "product_screen";
 
   // Layout Screens => *profile screen*
 

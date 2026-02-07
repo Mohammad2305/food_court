@@ -45,7 +45,6 @@ class OrdersScreen extends StatelessWidget {
                 }
                 if (state is ProfileDataSuccessful) {
                   final user = state.user;
-                  print(user.activeOrders);
                   return Column(
                     spacing: 10.h,
                     children: [

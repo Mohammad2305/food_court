@@ -18,7 +18,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(HomeLoading());
 
     try {
-      bestSeller = await productDataRepo.bestSellerProductsData();
+      bestSeller = await productDataRepo.bestSellerProductsData(count: 6);
       recommends = await productDataRepo.recommendProductsData();
       adsDiscounts = await productDataRepo.discountProductsData();
 

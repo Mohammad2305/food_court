@@ -30,6 +30,7 @@ class AuthRepoImpl extends AuthRepo {
             "active": <ProductModel>[],
             "completed": <ProductModel>[],
             "cancelled": <ProductModel>[],
+            "favorites": <ProductModel>[],
             "addresses": [],
           });
       // final user = userCredential.user;
@@ -175,6 +176,7 @@ class AuthRepoImpl extends AuthRepo {
           "completed": <ProductModel>[],
           "cancelled": <ProductModel>[],
           "addresses": [],
+          "favorites": <ProductModel>[],
         });
       }
 

@@ -5,11 +5,12 @@ import 'package:food_court/features/auth/presentation/manager/platform_auth/plat
 import 'package:food_court/features/auth/presentation/manager/register/register_cubit.dart';
 import 'package:food_court/features/auth/presentation/manager/reset_password/reset_password_cubit.dart';
 import 'package:food_court/features/auth/presentation/ui/pages/forget_password/forget_password_screen.dart';
+import 'package:food_court/features/best_seller/presentation/manager/best_seller_cubit.dart';
+import 'package:food_court/features/best_seller/presentation/ui/best_seller_screen.dart';
 import 'package:food_court/features/delivery_address/presentation/manager/delivery_address_cubit.dart';
-import 'package:food_court/features/layout/data/models/product_model.dart';
 import 'package:food_court/features/layout/data/repo/product_data_repo_impl.dart';
 import 'package:food_court/features/layout/presentation/manager/home_cubit/home_cubit.dart';
-import 'package:food_court/features/profile/data/models/user_model.dart';
+import 'package:food_court/features/product/presentation/ui/product_screen.dart';
 import 'package:food_court/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:food_court/features/profile/presentation/manager/profile_data_cubit.dart';
 import '../../../features/account/presentation/ui/account_screen.dart';
@@ -19,6 +20,7 @@ import '../../../features/auth/presentation/ui/pages/register/register_screen.da
 import '../../../features/auth/presentation/ui/pages/set_password/set_password_screen.dart';
 import '../../../features/delivery_address/presentation/ui/pages/addresses_list/address_list_screen.dart';
 import '../../../features/delivery_address/presentation/ui/pages/new_address/new_address_screen.dart';
+import '../../../features/layout/data/models/product_model.dart';
 import '../../../features/layout/presentation/ui/layouts/layout/layout_screen.dart';
 import '../../../features/onboarding/presentation/ui/onboarding_screen.dart';
 import '../../../features/orders/presentation/manager/orders_cubit.dart';
@@ -90,6 +92,14 @@ class RouteNavigator {
             child: LayoutScreen(),
           ),
         );
+      case AppRoutes.bestSellerScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) =>
+                BestSellerCubit(ProductDataRepoImpl())..loadBestSellerData(),
+            child: BestSellerScreen(),
+          ),
+        );
       case AppRoutes.profileScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -98,6 +108,9 @@ class RouteNavigator {
             child: ProfileScreen(),
           ),
         );
+      case AppRoutes.productScreen:
+        final product = settings.arguments as ProductModel;
+        return MaterialPageRoute(builder: (_) => ProductScreen(product: product,));
       // Layout Screens => *profile screen*
       // Layout Screens => *profile screen* => *order screen*
       case AppRoutes.ordersScreen:
@@ -105,7 +118,8 @@ class RouteNavigator {
           builder: (context) => BlocProvider<OrdersCubit>(
             create: (context) => OrdersCubit(),
             child: BlocProvider(
-              create: (context) => ProfileDataCubit(ProfileRepoImpl())..getUserData(),
+              create: (context) =>
+                  ProfileDataCubit(ProfileRepoImpl())..getUserData(),
               child: OrdersScreen(),
             ),
           ),
