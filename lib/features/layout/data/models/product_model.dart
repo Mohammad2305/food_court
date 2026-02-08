@@ -6,6 +6,7 @@ class ProductModel {
   final double productStars;
   final int productOrdersNumbers;
   final double productDiscount;
+  final String productDescription;
 
   ProductModel({
     required this.productName,
@@ -15,6 +16,7 @@ class ProductModel {
     required this.productStars,
     required this.productOrdersNumbers,
     required this.productDiscount,
+    required this.productDescription,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
@@ -27,6 +29,19 @@ class ProductModel {
       productOrdersNumbers:
           (json["product_orders_numbers"] as num?)?.toInt() ?? 0,
       productDiscount: (json["product_discount"] as num?)?.toDouble() ?? 0.0,
+      productDescription: json["product_description"] ?? "",
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "product_name": productName,
+      "product_image": productImage,
+      "product_price": productPrice,
+      "product_category": productCategory,
+      "product_stars": productStars,
+      "product_orders_numbers": productOrdersNumbers,
+    };
+  }
 }
+

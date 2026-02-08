@@ -10,6 +10,8 @@ class UserModel {
   final List activeOrders;
   final List cancelOrders;
   final List completedOrders;
+  final List address;
+  final List favorites;
 
   UserModel({
     required this.name,
@@ -20,6 +22,8 @@ class UserModel {
     required this.cancelOrders,
     required this.completedOrders,
     this.image,
+    required this.address,
+    required this.favorites,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -32,6 +36,8 @@ class UserModel {
       activeOrders: List<String>.from(json['active'] ?? []),
       cancelOrders: List<String>.from(json['cancelled'] ?? []),
       completedOrders: List<String>.from(json['completed'] ?? []),
+      address: List<String>.from(json['address'] ?? []),
+      favorites: List<String>.from(json['favorites'] ?? []),
     );
   }
 
@@ -45,6 +51,8 @@ class UserModel {
       'active': activeOrders.map((e) => e.toJson()).toList(),
       'cancelled': cancelOrders.map((e) => e.toJson()).toList(),
       'completed': completedOrders.map((e) => e.toJson()).toList(),
+      "favorites": favorites.map((e) => e.toJson()).toList(),
+      "address": address.map((e) => e.toJson()).toList(),
     };
   }
 }

@@ -10,6 +10,7 @@ import 'package:food_court/features/best_seller/presentation/ui/best_seller_scre
 import 'package:food_court/features/delivery_address/presentation/manager/delivery_address_cubit.dart';
 import 'package:food_court/features/layout/data/repo/product_data_repo_impl.dart';
 import 'package:food_court/features/layout/presentation/manager/home_cubit/home_cubit.dart';
+import 'package:food_court/features/product/presentation/manager/product_details_cubit.dart';
 import 'package:food_court/features/product/presentation/ui/product_screen.dart';
 import 'package:food_court/features/profile/data/repo/profile_repo_impl.dart';
 import 'package:food_court/features/profile/presentation/manager/profile_data_cubit.dart';
@@ -110,7 +111,12 @@ class RouteNavigator {
         );
       case AppRoutes.productScreen:
         final product = settings.arguments as ProductModel;
-        return MaterialPageRoute(builder: (_) => ProductScreen(product: product,));
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => ProductDetailsCubit(),
+            child: ProductScreen(product: product),
+          ),
+        );
       // Layout Screens => *profile screen*
       // Layout Screens => *profile screen* => *order screen*
       case AppRoutes.ordersScreen:

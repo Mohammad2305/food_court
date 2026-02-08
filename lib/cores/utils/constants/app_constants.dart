@@ -18,6 +18,9 @@ class AppConstants {
   static const String vegan = "vegan";
   static const String drink = "drinks";
   static const String meals = "meals";
+  static const String mealsSauce = "meal_sauce";
+  static const String desertSauce = "desert_sauce";
+  static const String drinksAdds = "drink_add";
   static const String desert = "deserts";
   static const String snacks = "snacks";
 }
