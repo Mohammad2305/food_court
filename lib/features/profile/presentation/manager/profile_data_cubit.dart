@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_court/cores/utils/constants/app_assets.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
 import 'package:food_court/features/profile/data/models/user_model.dart';
 import 'package:meta/meta.dart';
 import '../../domain/repo/profile_repo.dart';
@@ -63,15 +64,21 @@ class ProfileDataCubit extends Cubit<ProfileDataState> {
   Future<String?> uploadToCloudinary({required File imageFile}) async {
     emit(ImageChangeDataLoading());
     try {
-      final imageUrl = await profileRepo.uploadToCloudinary(imageFile: imageFile);
+      final imageUrl = await profileRepo.uploadToCloudinary(
+        imageFile: imageFile,
+      );
       if (imageUrl == null) {
         emit(ImageChangeDataError("Upload failed"));
         return null;
       }
 
-      debugPrint("________________________________________________________________");
+      debugPrint(
+        "________________________________________________________________",
+      );
       debugPrint('Cloudinary URL: $imageUrl');
-      debugPrint("________________________________________________________________");
+      debugPrint(
+        "________________________________________________________________",
+      );
 
       image = imageUrl;
       await saveImageUrlToFirebase(imageUrl);
@@ -95,6 +102,70 @@ class ProfileDataCubit extends Cubit<ProfileDataState> {
     });
 
     debugPrint('Saved to Firestore successfully');
+  }
+
+  Future<void> changeProductFavorites({required ProductModel? product}) async {
+    try {
+      emit(FavoriteLoadingState());
+
+      final uid = FirebaseAuth.instance.currentUser!.uid;
+
+      final snapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('favorites')
+          .where('product_name', isEqualTo: product?.productName)
+          .limit(1)
+          .get();
+
+      if (snapshot.docs.isNotEmpty) {
+        profileRepo.removeProductToFavorites(product: product, snapshot: snapshot,);
+        emit(IsNotFavoriteState());
+        debugPrint("remove item from favorites");
+      } else {
+        await profileRepo.addProductToFavorites(product: product);
+        emit(IsFavoriteState());
+        debugPrint("add item to favorites");
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+      emit(FavoriteErrorState(e.toString()));
+    }
+  }
+
+  void isFavoriteLocal({required ProductModel? product}) async {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
+    final snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('favorites')
+        .where('product_name', isEqualTo: product?.productName)
+        .limit(1)
+        .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      emit(IsFavoriteState());
+    } else {
+      emit(IsNotFavoriteState());
+    }
+  }
+
+  Future<void> getFavorites() async {
+    try{
+      emit(FavoritesDataLoading());
+      final uid = FirebaseAuth.instance.currentUser!.uid;
+      final snapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('favorites').get();
+      final favorites = snapshot.docs.map((doc){
+        return ProductModel.fromJson(doc.data());
+      });
+      emit(FavoritesDataSuccessful(favorites.toList()));
+    }catch(e){
+      debugPrint(e.toString());
+    }
   }
 
   @override

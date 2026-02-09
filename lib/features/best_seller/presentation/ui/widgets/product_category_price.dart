@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:food_court/cores/shared/themes/app_boxes_decoration.dart';
 import 'package:food_court/cores/shared/themes/app_text_styles.dart';
-import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/constants/app_colors.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/features/layout/data/models/food_category_model.dart';
@@ -21,29 +20,15 @@ class ProductCategoryPrice extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              decoration: AppBoxDecoration.welcomeButton(AppColors.whiteText),
-              padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
-              child: SvgPicture.asset(
-                categoryModel.icon ?? AppAssets.helpIcon,
-                width: 18.w,
-                height: 20.h,
-              ),
-            ),
-            Container(
-              decoration: AppBoxDecoration.welcomeButton(AppColors.whiteText),
-              padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
-              child: Icon(
-                Icons.favorite_border,
-                color: AppColors.welcomeColor,
-                size: 15.sp,
-              ),
-            ),
-          ],
-        ),
+        Container(
+          decoration: AppBoxDecoration.welcomeButton(AppColors.whiteText),
+          padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),
+          child: SvgPicture.asset(
+            categoryModel.icon,
+            width: 18.w,
+            height: 20.h,
+          ),
+        ).leftAligning,
         Container(
           decoration: AppBoxDecoration.welcomeButton(AppColors.welcomeColor),
           padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 5.w),

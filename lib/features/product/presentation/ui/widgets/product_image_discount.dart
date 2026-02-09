@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_court/cores/utils/extensions/paddings.dart';
-import 'package:food_court/features/profile/data/models/isInFavorite.dart';
+import 'package:food_court/features/product/presentation/ui/widgets/loved_bloc_builder.dart';
 import '../../../../../cores/shared/themes/app_boxes_decoration.dart';
 import '../../../../../cores/shared/themes/app_text_styles.dart';
 import '../../../../../cores/utils/constants/app_assets.dart';
@@ -48,29 +46,7 @@ class ProductImageDiscount extends StatelessWidget {
                 ),
               )
             : SizedBox.shrink(),
-        Positioned(
-          left: 10.w,
-          bottom: 10.h,
-          child: Container(
-            decoration: AppBoxDecoration.welcomeButton(AppColors.whiteText),
-            child: IconButton(
-              onPressed: () async {
-                FirebaseFirestore.instance
-                    .collection("users")
-                    .doc(FirebaseAuth.instance.currentUser?.uid).set({
-                  "favorites": FieldValue.arrayUnion([
-                    product?.toJson()
-                  ])
-                }, SetOptions(merge: true));
-              },
-              icon: Icon(
-                false ? Icons.favorite : Icons.favorite_border ,
-                color: AppColors.welcomeColor,
-                size: 25.sp,
-              ),
-            ),
-          ),
-        ),
+        LovedBlocBuilder(product: product,),
         Positioned(
           right: 10.w,
           bottom: 10.h,

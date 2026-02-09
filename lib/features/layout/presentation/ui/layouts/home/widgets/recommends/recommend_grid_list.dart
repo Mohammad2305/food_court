@@ -10,7 +10,7 @@ import '../../../../../../../../cores/utils/constants/app_colors.dart';
 class RecommendGridList extends StatelessWidget {
   final List<ProductModel>? products;
 
-  const RecommendGridList({super.key, this.products});
+  const RecommendGridList({super.key, this.products,});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:food_court/features/profile/data/models/user_model.dart';
+import '../../../layout/data/models/product_model.dart';
 
 abstract class ProfileRepo {
   Future<UserModel?> getUserData();
@@ -12,4 +13,11 @@ abstract class ProfileRepo {
   });
 
   Future<String?> uploadToCloudinary({required File imageFile});
+
+  Future<void> addProductToFavorites({required ProductModel? product});
+
+  Future<void> removeProductToFavorites({
+    required ProductModel? product,
+    required dynamic snapshot,
+  });
 }

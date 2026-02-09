@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/features/orders/presentation/ui/pages/orders/layouts/active_orders/widgets/active_item_actions.dart';
 import 'package:food_court/features/profile/data/models/user_model.dart';
@@ -15,8 +16,8 @@ class ActiveOrdersLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(user?.activeOrders.toString());
-    return (user?.activeOrders??[]).isEmpty
+    debugPrint([].toString());
+    return ([]??[]).isEmpty
         ? EmptyList(orderState: 'active',)
         : ListView.separated(
       itemBuilder: (context, index) {
@@ -32,7 +33,7 @@ class ActiveOrdersLayout extends StatelessWidget {
                 ),
                 clipBehavior: Clip.hardEdge,
                 child: Image.network(
-                  user?.activeOrders[index].productImage,
+                  AppAssets.imageSample,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -41,8 +42,8 @@ class ActiveOrdersLayout extends StatelessWidget {
               spacing: 5.h,
               children: [
                 ItemInfo(
-                  itemName: user?.activeOrders[index].productName,
-                  itemPrice: user?.activeOrders[index]..productPrice,
+                  itemName: "user?.activeOrders[index].productName",
+                  itemPrice: 0,
                 ),
                 OrderInfo(
                   itemCount: 2,
@@ -56,7 +57,7 @@ class ActiveOrdersLayout extends StatelessWidget {
       },
       separatorBuilder: (context, index) => Divider(),
       shrinkWrap: true,
-      itemCount: user!.activeOrders.length,
+      itemCount: 1,
     );
   }
 }

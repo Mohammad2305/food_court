@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/features/orders/presentation/ui/pages/orders/layouts/completed_orders/widgets/completed_item_actions.dart';
 import 'package:food_court/features/orders/presentation/ui/pages/orders/widgets/empty_list.dart';
@@ -16,7 +17,7 @@ class CompletedOrdersLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (user?.completedOrders ?? []).isEmpty
+    return ([] ?? []).isEmpty
         ? EmptyList(orderState: 'completed')
         : ListView.separated(
             itemBuilder: (context, index) {
@@ -32,7 +33,7 @@ class CompletedOrdersLayout extends StatelessWidget {
                       ),
                       clipBehavior: Clip.hardEdge,
                       child: Image.network(
-                        user?.completedOrders[index].productImage,
+                        AppAssets.imageSample,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -41,8 +42,8 @@ class CompletedOrdersLayout extends StatelessWidget {
                     spacing: 5.h,
                     children: [
                       ItemInfo(
-                        itemName: user?.completedOrders[index].productName,
-                        itemPrice: user?.completedOrders[index].productPrice,
+                        itemName: "user?.completedOrders[index].productName",
+                        itemPrice: 0,
                       ),
                       OrderInfo(itemCount: 2, dateTime: DateTime.now()),
                       CompletedItemActions(index: index),
@@ -53,7 +54,7 @@ class CompletedOrdersLayout extends StatelessWidget {
             },
             separatorBuilder: (context, index) => Divider(),
             shrinkWrap: true,
-            itemCount: user!.completedOrders.length,
+            itemCount: 1,
           );
   }
 }

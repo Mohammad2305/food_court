@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_court/cores/utils/constants/app_constants.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
 import 'package:food_court/features/profile/domain/repo/profile_repo.dart';
 import 'package:http/http.dart' as http;
 import '../models/user_model.dart';
@@ -82,5 +83,21 @@ class ProfileRepoImpl extends ProfileRepo {
       return null;
     }
   }
-}
 
+  @override
+  Future<void> addProductToFavorites({required ProductModel? product}) async {
+    // ✅ ADD TO FIREBASE
+    await FirebaseFirestore.instance
+        .collection(AppConstants.usersCollection)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("favorites").doc(product?.productName).set(product!.toJson());
+  }
+
+  @override
+  Future<void> removeProductToFavorites({
+    required ProductModel? product,
+    required dynamic snapshot,
+  }) async {
+    await snapshot.docs.first.reference.delete();
+  }
+}

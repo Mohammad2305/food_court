@@ -37,3 +37,26 @@ final class ImageChangeDataError extends ProfileDataState {
   final String message;
   ImageChangeDataError(this.message);
 }
+
+final class IsFavoriteState extends ProfileDataState {}
+
+final class IsNotFavoriteState extends ProfileDataState {}
+
+final class FavoriteLoadingState extends ProfileDataState{}
+
+final class FavoriteErrorState extends ProfileDataState{
+  final String? error;
+  FavoriteErrorState(this.error);
+}
+
+final class FavoritesDataLoading extends ProfileDataState {}
+
+final class FavoritesDataSuccessful extends ProfileDataState {
+  final List<ProductModel> favorites;
+  FavoritesDataSuccessful(this.favorites);
+}
+
+final class FavoritesDataError extends ProfileDataState {
+  final String message;
+  FavoritesDataError(this.message);
+}

@@ -1,5 +1,10 @@
 import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/constants/app_constants.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
+import 'package:food_court/features/layout/data/models/product_model.dart';
 
 class UserModel {
   final String name;
@@ -7,23 +12,13 @@ class UserModel {
   final String? image;
   final String phoneNumber;
   final String birthDay;
-  final List activeOrders;
-  final List cancelOrders;
-  final List completedOrders;
-  final List address;
-  final List favorites;
 
   UserModel({
     required this.name,
     required this.email,
     required this.phoneNumber,
     required this.birthDay,
-    required this.activeOrders,
-    required this.cancelOrders,
-    required this.completedOrders,
     this.image,
-    required this.address,
-    required this.favorites,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -33,11 +28,6 @@ class UserModel {
       phoneNumber: json[AppConstants.mobileNumber]?.toString() ?? '',
       image: json[AppConstants.image]?.toString() ?? AppAssets.noImageProfile,
       birthDay: json[AppConstants.birthDay]?.toString() ?? '',
-      activeOrders: List<String>.from(json['active'] ?? []),
-      cancelOrders: List<String>.from(json['cancelled'] ?? []),
-      completedOrders: List<String>.from(json['completed'] ?? []),
-      address: List<String>.from(json['address'] ?? []),
-      favorites: List<String>.from(json['favorites'] ?? []),
     );
   }
 
@@ -48,11 +38,6 @@ class UserModel {
       "birth_date": birthDay,
       "mobile_number": phoneNumber,
       "image": image,
-      'active': activeOrders.map((e) => e.toJson()).toList(),
-      'cancelled': cancelOrders.map((e) => e.toJson()).toList(),
-      'completed': completedOrders.map((e) => e.toJson()).toList(),
-      "favorites": favorites.map((e) => e.toJson()).toList(),
-      "address": address.map((e) => e.toJson()).toList(),
     };
   }
 }

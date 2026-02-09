@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_court/cores/utils/constants/app_assets.dart';
 import 'package:food_court/cores/utils/extensions/main_app.dart';
 import 'package:food_court/features/profile/data/models/user_model.dart';
 import '../../../../../../../../cores/shared/themes/app_boxes_decoration.dart';
@@ -15,8 +16,8 @@ class CancelledOrdersLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(user?.cancelOrders.toString());
-    return (user?.cancelOrders??[]).isEmpty
+    debugPrint([].toString());
+    return ([]??[]).isEmpty
         ? EmptyList(orderState: 'cancelled',)
         : ListView.separated(
             itemBuilder: (context, index) {
@@ -32,7 +33,7 @@ class CancelledOrdersLayout extends StatelessWidget {
                       ),
                       clipBehavior: Clip.hardEdge,
                       child: Image.network(
-                        user?.cancelOrders[index].productImage,
+                        AppAssets.imageSample,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -41,13 +42,11 @@ class CancelledOrdersLayout extends StatelessWidget {
                     spacing: 5.h,
                     children: [
                       ItemInfo(
-                        itemName: user?.cancelOrders[index]
-                            .productName,
+                        itemName: "user?.cancelOrders[index].productName",
                         itemPrice: 20,
                       ),
                       OrderInfo(
-                        itemCount: user?.cancelOrders[index]
-                            .productPrice,
+                        itemCount: 0,
                         dateTime: DateTime.now(),
                       ),
                       CancelledItemActions(),
@@ -58,7 +57,7 @@ class CancelledOrdersLayout extends StatelessWidget {
             },
             separatorBuilder: (context, index) => Divider(),
             shrinkWrap: true,
-            itemCount: user!.cancelOrders.length,
+            itemCount: 1,
           );
   }
 }

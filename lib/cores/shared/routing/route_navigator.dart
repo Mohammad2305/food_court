@@ -88,8 +88,16 @@ class RouteNavigator {
       // Layout Screens
       case AppRoutes.layoutScreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => HomeCubit(ProductDataRepoImpl())..loadData(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) =>
+                    HomeCubit(ProductDataRepoImpl())..loadData(),
+              ),
+              BlocProvider(
+                create: (context) => ProfileDataCubit(ProfileRepoImpl())..getFavorites(),
+              ),
+            ],
             child: LayoutScreen(),
           ),
         );
@@ -112,8 +120,15 @@ class RouteNavigator {
       case AppRoutes.productScreen:
         final product = settings.arguments as ProductModel;
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => ProductDetailsCubit(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(create: (context) => ProductDetailsCubit()),
+              BlocProvider(
+                create: (context) =>
+                    ProfileDataCubit(ProfileRepoImpl())
+                      ..isFavoriteLocal(product: product),
+              ),
+            ],
             child: ProductScreen(product: product),
           ),
         );
