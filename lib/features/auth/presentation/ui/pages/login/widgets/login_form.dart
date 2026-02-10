@@ -22,17 +22,6 @@ class LoginForm extends StatelessWidget {
         spacing: 8.h,
         children: [
           const LoginFields(),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.forgetPassword);
-            },
-            child: Text(
-              "forget password",
-              style: AppTextStyles.textFtS14FW500.copyWith(
-                color: AppColors.welcomeColor,
-              ),
-            ),
-          ).rightAligning,
           CustomButton(
             onTap: () {
               if (loginKey.currentState!.validate()) {

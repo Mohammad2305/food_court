@@ -48,7 +48,7 @@ class BottomNavigationCustomBuild extends StatelessWidget {
             ),
           );
         },
-        separatorBuilder: (context, index) => SizedBox(width: 49.w),
+        separatorBuilder: (context, index) => SizedBox(width: 110.w),
       ),
     ).bottomAligning;
   }

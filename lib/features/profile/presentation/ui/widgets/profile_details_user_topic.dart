@@ -20,33 +20,6 @@ class ProfileDetailsUserTopic extends StatelessWidget {
         UserTopicProfile(),
         SettingsButton(
           profileDetailModel: ProfileDetailModel(
-            icon: AppAssets.contactIcon,
-            title: 'Contact Us',
-            onTap: () {
-              debugPrint("go to contacts");
-            },
-          ),
-        ),
-        SettingsButton(
-          profileDetailModel: ProfileDetailModel(
-            icon: AppAssets.helpIcon,
-            title: 'Help & FAQs',
-            onTap: () {
-              debugPrint("go to help");
-            },
-          ),
-        ),
-        SettingsButton(
-          profileDetailModel: ProfileDetailModel(
-            icon: AppAssets.settingIcon,
-            title: 'Settings',
-            onTap: () {
-              debugPrint("go to settings");
-            },
-          ),
-        ),
-        SettingsButton(
-          profileDetailModel: ProfileDetailModel(
             icon: AppAssets.logoutIcon,
             title: 'Log Out',
             onTap: () {

@@ -25,7 +25,6 @@ class AppAssets {
 
   // auth screen
   static final String gmailIcon = "$svgPath/auth/gmail.svg";
-  static final String facebookIcon = "$svgPath/auth/facebook.svg";
   static final String closeEye = "$svgPath/auth/closed_eye.svg";
   static final String openEye = "$svgPath/auth/open_eye.svg";
 
@@ -33,23 +32,15 @@ class AppAssets {
   static final String homeIcon = "$svgPath/layout/general/home.svg";
   static final String dinnerIcon = "$svgPath/layout/general/dinner.svg";
   static final String loveIcon = "$svgPath/layout/general/love.svg";
-  static final String menuIcon = "$svgPath/layout/general/menu.svg";
-  static final String callCenterIcon =
-      "$svgPath/layout/general/call_center.svg";
   static final List<String> navigators = [
     AppAssets.homeIcon,
     AppAssets.dinnerIcon,
     AppAssets.loveIcon,
-    AppAssets.menuIcon,
-    AppAssets.callCenterIcon,
   ];
 
   // layout screens => *home screen*
   static final String cartIcon = "$svgPath/layout/home/cart.svg";
-  static final String notificationIcon =
-      "$svgPath/layout/home/notification.svg";
   static final String profileIcon = "$svgPath/layout/home/profile.svg";
-  static final String searchIcon = "$svgPath/layout/home/search.svg";
   static final String desserts = "$svgPath/layout/home/desserts.svg";
   static final String drinks = "$svgPath/layout/home/drinks.svg";
   static final String meals = "$svgPath/layout/home/meals.svg";
@@ -59,9 +50,6 @@ class AppAssets {
   // profile screens
   static final String shoppingIcon = "$svgPath/profile/bag.svg";
   static final String locationIcon = "$svgPath/profile/address.svg";
-  static final String contactIcon = "$svgPath/profile/contacts.svg";
-  static final String helpIcon = "$svgPath/profile/help.svg";
-  static final String settingIcon = "$svgPath/profile/settings.svg";
   static final String logoutIcon = "$svgPath/profile/logout.svg";
 
   // profile screens => *orders screen*

@@ -5,7 +5,6 @@ class Assets {
   static const String accountCam = 'assets/images/svg/account/cam.svg';
   static const String addressAddress = 'assets/images/svg/address/address.svg';
   static const String authClosedEye = 'assets/images/svg/auth/closed_eye.svg';
-  static const String authFacebook = 'assets/images/svg/auth/facebook.svg';
   static const String authGmail = 'assets/images/svg/auth/gmail.svg';
   static const String authOpenEye = 'assets/images/svg/auth/open_eye.svg';
   static const String generalCallCenter = 'assets/images/svg/layout/general/call_center.svg';
@@ -17,9 +16,7 @@ class Assets {
   static const String homeDesserts = 'assets/images/svg/layout/home/desserts.svg';
   static const String homeDrinks = 'assets/images/svg/layout/home/drinks.svg';
   static const String homeMeals = 'assets/images/svg/layout/home/meals.svg';
-  static const String homeNotification = 'assets/images/svg/layout/home/notification.svg';
   static const String homeProfile = 'assets/images/svg/layout/home/profile.svg';
-  static const String homeSearch = 'assets/images/svg/layout/home/search.svg';
   static const String homeSnacks = 'assets/images/svg/layout/home/snacks.svg';
   static const String homeVegan = 'assets/images/svg/layout/home/vegan.svg';
   static const String onboardingCardIcon = 'assets/images/svg/onboarding/card_icon.svg';
@@ -36,10 +33,7 @@ class Assets {
   static const String pngPaymentImg = 'assets/images/png/payment_img.png';
   static const String profileAddress = 'assets/images/svg/profile/address.svg';
   static const String profileBag = 'assets/images/svg/profile/bag.svg';
-  static const String profileContacts = 'assets/images/svg/profile/contacts.svg';
-  static const String profileHelp = 'assets/images/svg/profile/help.svg';
   static const String profileLogout = 'assets/images/svg/profile/logout.svg';
-  static const String profileSettings = 'assets/images/svg/profile/settings.svg';
   static const String svgLogo = 'assets/images/svg/logo.svg';
   static const String svgWelcome = 'assets/images/svg/welcome.svg';
 

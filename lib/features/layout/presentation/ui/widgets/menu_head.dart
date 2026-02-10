@@ -19,23 +19,11 @@ class MenuHead extends StatelessWidget {
         Row(
           spacing: 8.w,
           children: [
-            SizedBox(
-              width: 180.w,
-              height: 30.h,
-              child: SearchBar(
-                trailing: {
-                  CircleAvatar(
-                    radius: 10.r,
-                    backgroundColor: AppColors.welcomeColor,
-                    child: SvgPicture.asset(AppAssets.searchIcon),
-                  ),
-                },
-              ),
-            ),
+            SvgPicture.asset(AppAssets.splash, height: 35.h,),
             Spacer(),
             ActionItem(
               iconPath: AppAssets.cartIcon,
-              onTap: () {
+              onTap: () async {
                 // context.read<HomeCubit>().getBestSellerProducts();
                 // FirebaseFirestore.instance.collection("adds").add({
                 //   // "product_image": "https://i.pinimg.com/736x/0b/dc/28/0bdc281c243a6179adb33b954540fb96.jpg",
@@ -46,9 +34,14 @@ class MenuHead extends StatelessWidget {
                 //   "product_orders_numbers": 422,
                 //   "product_discount": 0.0,
                 // });
+                await FirebaseFirestore.instance
+                    .collection('foods')
+                    .doc("Jsd7R4b8wolLLcLxNZcW")
+                    .update({
+                      'chooses': ["Blue Rare", "Rare", "Medium Rare", "Medium", "Medium Well", "well done",] ,
+                    });
               },
             ),
-            ActionItem(iconPath: AppAssets.notificationIcon, onTap: () {}),
             ActionItem(
               iconPath: AppAssets.profileIcon,
               onTap: () {
@@ -61,9 +54,3 @@ class MenuHead extends StatelessWidget {
     ).symmetricPadding(horizontal: 36.w);
   }
 }
-// drink add
-// Ice     0.5  3.9 488
-// Mint    1.5  3.8 522
-// Cocoa   1.0  3.5 455
-// soda    1.5  3.8 522
-

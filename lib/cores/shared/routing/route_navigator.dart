@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_court/features/auth/presentation/manager/login/login_cubit.dart';
 import 'package:food_court/features/auth/presentation/manager/platform_auth/platform_auth_cubit.dart';
 import 'package:food_court/features/auth/presentation/manager/register/register_cubit.dart';
-import 'package:food_court/features/auth/presentation/manager/reset_password/reset_password_cubit.dart';
-import 'package:food_court/features/auth/presentation/ui/pages/forget_password/forget_password_screen.dart';
 import 'package:food_court/features/best_seller/presentation/manager/best_seller_cubit.dart';
 import 'package:food_court/features/best_seller/presentation/ui/best_seller_screen.dart';
 import 'package:food_court/features/delivery_address/presentation/manager/delivery_address_cubit.dart';
@@ -18,7 +16,6 @@ import '../../../features/account/presentation/ui/account_screen.dart';
 import '../../../features/auth/data/repo/auth_repo_impl.dart';
 import '../../../features/auth/presentation/ui/pages/login/login_screen.dart';
 import '../../../features/auth/presentation/ui/pages/register/register_screen.dart';
-import '../../../features/auth/presentation/ui/pages/set_password/set_password_screen.dart';
 import '../../../features/delivery_address/presentation/ui/pages/addresses_list/address_list_screen.dart';
 import '../../../features/delivery_address/presentation/ui/pages/new_address/new_address_screen.dart';
 import '../../../features/layout/data/models/product_model.dart';
@@ -69,20 +66,6 @@ class RouteNavigator {
               ),
             ],
             child: LoginScreen(),
-          ),
-        );
-      case AppRoutes.forgetPassword:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => ResetPasswordCubit(AuthRepoImpl()),
-            child: ForgetPasswordScreen(),
-          ),
-        );
-      case AppRoutes.setPasswordScreen:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => ResetPasswordCubit(AuthRepoImpl()),
-            child: SetPasswordScreen(),
           ),
         );
       // Layout Screens

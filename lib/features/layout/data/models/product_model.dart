@@ -7,6 +7,7 @@ class ProductModel {
   final int productOrdersNumbers;
   final double productDiscount;
   final String productDescription;
+  final List<String> chooses;
 
   ProductModel({
     required this.productName,
@@ -16,20 +17,23 @@ class ProductModel {
     required this.productStars,
     required this.productOrdersNumbers,
     required this.productDiscount,
-    required this.productDescription,
+    required this.productDescription, required this.chooses,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      productName: json["product_name"] ?? "",
-      productImage: json["product_image"] ?? "",
-      productCategory: json["product_category"] ?? "",
-      productPrice: (json["product_price"] as num?)?.toDouble() ?? 0.0,
-      productStars: (json["product_stars"] as num?)?.toDouble() ?? 0.0,
+      productName: json['product_name'] as String? ?? '',
+      productImage: json['product_image'] as String? ?? '',
+      productCategory: json['product_category'] as String? ?? '',
+      productPrice: (json['product_price'] as num?)?.toDouble() ?? 0.0,
+      productStars: (json['product_stars'] as num?)?.toDouble() ?? 0.0,
       productOrdersNumbers:
-          (json["product_orders_numbers"] as num?)?.toInt() ?? 0,
-      productDiscount: (json["product_discount"] as num?)?.toDouble() ?? 0.0,
-      productDescription: json["product_description"] ?? "",
+      (json['product_orders_numbers'] as num?)?.toInt() ?? 0,
+      productDiscount:
+      (json['product_discount'] as num?)?.toDouble() ?? 0.0,
+      productDescription:
+      json['product_description'] as String? ?? '',
+      chooses: List<String>.from(json['chooses'] ?? []),
     );
   }
 
@@ -41,6 +45,9 @@ class ProductModel {
       "product_category": productCategory,
       "product_stars": productStars,
       "product_orders_numbers": productOrdersNumbers,
+      "product_discount": productDiscount,
+      "product_description": productDescription,
+      "chooses": chooses,
     };
   }
 }

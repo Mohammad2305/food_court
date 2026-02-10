@@ -11,14 +11,11 @@ class AppRoutes{
   // Auth Screens
   static const String registerScreen = "register_screen";
   static const String loginScreen = "login_screen";
-  static const String forgetPassword = "forget_password_screen";
-  static const String setPasswordScreen = "set_password_screen";
 
   // Layout Screens
   static const String layoutScreen = "layout_screen";
   static const String bestSellerScreen = "best_seller_screen";
   static const String profileScreen = "profile_screen";
-  static const String notificationScreen = "notification_screen";
   static const String cartScreen = "cart_screen";
   static const String productScreen = "product_screen";
 

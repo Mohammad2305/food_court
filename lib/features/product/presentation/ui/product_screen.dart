@@ -55,7 +55,7 @@ class ProductScreen extends StatelessWidget {
               ],
             ),
             Divider(color: AppColors.welcomeColor.withAlpha(100)),
-            AddsBlocBuilder(addName: product?.productName, addPrice: 1,),
+            Expanded(child: AddsBlocBuilder(addChooses: product?.chooses, addPrice: 1,)),
             CustomButton(
               onTap: () {
                 debugPrint("add to cart");

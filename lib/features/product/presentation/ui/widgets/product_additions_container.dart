@@ -7,8 +7,7 @@ class ProductAdditionsContainer extends StatelessWidget {
   final int index;
   final int selectedIndex;
   final String? productName;
-  final double? productPrice;
-  const ProductAdditionsContainer({super.key, required this.index, required this.selectedIndex, this.productName, this.productPrice});
+  const ProductAdditionsContainer({super.key, required this.index, required this.selectedIndex, this.productName,});
 
   @override
   Widget build(BuildContext context) {
@@ -22,26 +21,13 @@ class ProductAdditionsContainer extends StatelessWidget {
         toggleable: true,
         value: index,
         activeColor: AppColors.welcomeColor,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              productName ?? "Product Name",
-              style: AppTextStyles.textFtS15FW500.copyWith(
-                color: selectedIndex == index
-                    ? AppColors.welcomeColor
-                    : Colors.black,
-              ),
-            ),
-            Text(
-              "\$ ${(productPrice ?? 0).toStringAsFixed(2)}",
-              style: AppTextStyles.textFtS12FW300.copyWith(
-                color: selectedIndex == index
-                    ? AppColors.welcomeColor
-                    : Colors.black,
-              ),
-            )
-          ],
+        title: Text(
+          productName ?? "Product Name",
+          style: AppTextStyles.textFtS15FW500.copyWith(
+            color: selectedIndex == index
+                ? AppColors.welcomeColor
+                : Colors.black,
+          ),
         ),
         controlAffinity: ListTileControlAffinity.trailing,
       ),
