@@ -34,12 +34,13 @@ class MenuHead extends StatelessWidget {
                 //   "product_orders_numbers": 422,
                 //   "product_discount": 0.0,
                 // });
-                await FirebaseFirestore.instance
-                    .collection('foods')
-                    .doc("Jsd7R4b8wolLLcLxNZcW")
-                    .update({
-                      'chooses': ["Blue Rare", "Rare", "Medium Rare", "Medium", "Medium Well", "well done",] ,
-                    });
+                // await FirebaseFirestore.instance
+                //     .collection('foods')
+                //     .doc("Jsd7R4b8wolLLcLxNZcW")
+                //     .update({
+                //       'chooses': ["Blue Rare", "Rare", "Medium Rare", "Medium", "Medium Well", "well done",] ,
+                //     });
+                Navigator.pushNamed(context, AppRoutes.cartScreen);
               },
             ),
             ActionItem(

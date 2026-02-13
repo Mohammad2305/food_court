@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:food_court/features/auth/domain/repo/auth_repo.dart';
-import 'package:food_court/features/layout/data/models/product_model.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepoImpl extends AuthRepo {
@@ -27,11 +25,6 @@ class AuthRepoImpl extends AuthRepo {
             "mobile_number": mobileNumber,
             "birth_date": birthDate,
             "image": null,
-            "active": <ProductModel>[],
-            "completed": <ProductModel>[],
-            "cancelled": <ProductModel>[],
-            "favorites": <ProductModel>[],
-            "addresses": [],
           });
       // final user = userCredential.user;
       return userCredential;
@@ -45,9 +38,6 @@ class AuthRepoImpl extends AuthRepo {
       return e;
     }
   }
-
-  @override
-  phoneNumberVerify() {}
 
   // sign in to saved account with using email and password
   @override
@@ -90,50 +80,6 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
-  forgetPassword({required String email}) async {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: email.trim());
-  }
-
-  @override
-  resetPassword({required String newPassword, required User user}) async {
-    await user.updatePassword(newPassword);
-  }
-
-  @override
-  signInWithFacebook() async {
-    try {
-      // Trigger the sign-in flow
-      final LoginResult loginResult = await FacebookAuth.instance.login();
-
-      // Create a credential from the access token
-      final OAuthCredential facebookAuthCredential =
-          FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
-      // Once signed in, return the UserCredential
-      return await FirebaseAuth.instance.signInWithCredential(
-        facebookAuthCredential,
-      );
-    } on FirebaseException catch (e) {
-      switch (e.code) {
-        case 'account-exists-with-different-credential':
-          return 'Account exists with another sign-in method';
-        case 'invalid-credential':
-          return 'Invalid Google credentials';
-        case 'operation-not-allowed':
-          return 'Google sign-in is disabled';
-        case 'user-disabled':
-          return 'This account has been disabled';
-        case 'network-request-failed':
-          return 'Check your internet connection';
-        default:
-          return 'Google sign-in failed';
-      }
-    } catch (e) {
-      return e;
-    }
-  }
-
-  @override
   signInWithGoogle() async {
     try {
       // 1️⃣ Start Google Sign-In
@@ -172,11 +118,6 @@ class AuthRepoImpl extends AuthRepo {
           "full_name": user.displayName ?? "No Name",
           "email": user.email,
           "image": user.photoURL,
-          "active": <ProductModel>[],
-          "completed": <ProductModel>[],
-          "cancelled": <ProductModel>[],
-          "addresses": [],
-          "favorites": <ProductModel>[],
         });
       }
 

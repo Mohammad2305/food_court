@@ -24,7 +24,7 @@ class FavoriteBlocBuilder extends StatelessWidget {
         if (state is ProfileDataError) {
           return Text(state.message, style: const TextStyle(color: Colors.red));
         }
-        if (state is FavoritesDataSuccessful) {
+        if (state is FavoritesSuccessfulState) {
           return RecommendGridList(products: state.favorites,);
         }
         return const SizedBox();

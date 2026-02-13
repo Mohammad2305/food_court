@@ -12,7 +12,7 @@ class LoginCubit extends Cubit<LoginState> {
   TextEditingController password = TextEditingController();
   TextEditingController email = TextEditingController();
 
-  signInEmailAndPassword({
+  Future<void> signInEmailAndPassword({
     required String password,
     required String email,
   }) async {

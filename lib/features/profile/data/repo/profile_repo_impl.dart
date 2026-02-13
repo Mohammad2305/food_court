@@ -90,7 +90,9 @@ class ProfileRepoImpl extends ProfileRepo {
     await FirebaseFirestore.instance
         .collection(AppConstants.usersCollection)
         .doc(FirebaseAuth.instance.currentUser?.uid)
-        .collection("favorites").doc(product?.productName).set(product!.toJson());
+        .collection("favorites")
+        .doc(product?.productName)
+        .set(product!.toJson());
   }
 
   @override
@@ -99,5 +101,49 @@ class ProfileRepoImpl extends ProfileRepo {
     required dynamic snapshot,
   }) async {
     await snapshot.docs.first.reference.delete();
+  }
+
+  @override
+  addProductCart({required ProductModel? product, required int? amount}) async {
+    // ✅ ADD TO FIREBASE
+    await FirebaseFirestore.instance
+        .collection(AppConstants.usersCollection)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .collection("cart")
+        .doc(product?.productName)
+        .set({"product": product?.toJson(), "amount": amount, 'time': FieldValue.serverTimestamp(),});
+  }
+
+  @override
+  changeAmountProductCart({
+    required ProductModel? product,
+    required int? newAmount,
+    required dynamic snapshot,
+  }) async {
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+
+    final cartRef = FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .collection('cart');
+
+    final snapshot = await cartRef
+        .where('product.product_name', isEqualTo: product?.productName)
+        .limit(1)
+        .get();
+
+    if (snapshot.docs.isEmpty) return;
+
+    final docRef = snapshot.docs.first.reference;
+
+    if (newAmount! <= 0) {
+      // 🗑 Remove item
+      await docRef.delete();
+    } else {
+      // 🔄 Update amount
+      await docRef.update({
+        'amount': newAmount,
+      });
+    }
   }
 }

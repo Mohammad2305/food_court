@@ -13,14 +13,6 @@ abstract class AuthRepo {
 
   signInWithGoogle();
 
-  signInWithFacebook();
-
-
   emailVerify({required User user});
 
-  phoneNumberVerify();
-
-  forgetPassword({required String email});
-
-  resetPassword({required String newPassword, required User user});
 }

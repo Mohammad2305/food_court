@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_court/cores/utils/constants/app_assets.dart';
+import 'package:food_court/features/cart/data/models/order_model.dart';
 import 'package:food_court/features/layout/data/models/product_model.dart';
 import 'package:food_court/features/profile/data/models/user_model.dart';
 import 'package:meta/meta.dart';
@@ -153,7 +154,7 @@ class ProfileDataCubit extends Cubit<ProfileDataState> {
 
   Future<void> getFavorites() async {
     try{
-      emit(FavoritesDataLoading());
+      emit(FavoriteLoadingState());
       final uid = FirebaseAuth.instance.currentUser!.uid;
       final snapshot = await FirebaseFirestore.instance
           .collection('users')
@@ -162,10 +163,74 @@ class ProfileDataCubit extends Cubit<ProfileDataState> {
       final favorites = snapshot.docs.map((doc){
         return ProductModel.fromJson(doc.data());
       });
-      emit(FavoritesDataSuccessful(favorites.toList()));
+      emit(FavoritesSuccessfulState(favorites.toList()));
     }catch(e){
       debugPrint(e.toString());
     }
+  }
+
+  Future<void> addProductCart({required ProductModel? product, required int? amount}) async {
+    try {
+      emit(CartLoadingState());
+
+      final uid = FirebaseAuth.instance.currentUser!.uid;
+
+      final snapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('cart')
+          .where('${product?.productName}', isEqualTo: product?.productName)
+          .limit(1)
+          .get();
+
+      final data = await FirebaseFirestore.instance.collection('users')
+          .doc(uid)
+          .collection('cart').get();
+
+
+      if (snapshot.docs.isNotEmpty) {
+        emit(IsNotInCartState());
+        profileRepo.changeAmountProductCart(product: product, newAmount: amount, snapshot: snapshot,);
+        emit(ChangeAmountProductCartState());
+      } else {
+        profileRepo.addProductCart(product: product, amount: amount,);
+        emit(IsInCartState());
+      }
+      debugPrint(data.docs.first.data().toString());
+    } catch (e) {
+      debugPrint(e.toString());
+      emit(CartErrorState(e.toString()));
+    }
+  }
+
+  Future<void> getCart() async {
+    try{
+      emit(CartLoadingState());
+      final uid = FirebaseAuth.instance.currentUser!.uid;
+      final snapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('cart').get();
+      final cart = snapshot.docs.map((doc){
+        return OrderModel.fromJson(doc.data());
+      });
+      cart.map((item){
+        print(item.dateTime);
+      });
+      emit(CartSuccessfulState(cart.toList()));
+    }catch(e){
+      debugPrint(e.toString());
+    }
+  }
+
+  double totalOrderPrice({required List<OrderModel>? orders}){
+    double total = 0;
+    for(int i = 0 ; i<orders!.length; i++){
+      total += (orders[i].amount??0) *
+          (orders[i].product.productPrice??0) *
+          (1 - (orders[i].product.productDiscount??0) / 100);
+    }
+    return total;
   }
 
   @override

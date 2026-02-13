@@ -5,6 +5,7 @@ import 'package:food_court/features/auth/presentation/manager/platform_auth/plat
 import 'package:food_court/features/auth/presentation/manager/register/register_cubit.dart';
 import 'package:food_court/features/best_seller/presentation/manager/best_seller_cubit.dart';
 import 'package:food_court/features/best_seller/presentation/ui/best_seller_screen.dart';
+import 'package:food_court/features/cart/presentation/ui/cart_screen.dart';
 import 'package:food_court/features/delivery_address/presentation/manager/delivery_address_cubit.dart';
 import 'package:food_court/features/layout/data/repo/product_data_repo_impl.dart';
 import 'package:food_court/features/layout/presentation/manager/home_cubit/home_cubit.dart';
@@ -115,7 +116,14 @@ class RouteNavigator {
             child: ProductScreen(product: product),
           ),
         );
-      // Layout Screens => *profile screen*
+      case AppRoutes.cartScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider<ProfileDataCubit>(
+            create: (context) => ProfileDataCubit(ProfileRepoImpl())..getCart(),
+            child: CartScreen(),
+          ),
+        );
+    // Layout Screens => *profile screen*
       // Layout Screens => *profile screen* => *order screen*
       case AppRoutes.ordersScreen:
         return MaterialPageRoute(

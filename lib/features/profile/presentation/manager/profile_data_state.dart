@@ -49,14 +49,26 @@ final class FavoriteErrorState extends ProfileDataState{
   FavoriteErrorState(this.error);
 }
 
-final class FavoritesDataLoading extends ProfileDataState {}
-
-final class FavoritesDataSuccessful extends ProfileDataState {
+final class FavoritesSuccessfulState extends ProfileDataState {
   final List<ProductModel> favorites;
-  FavoritesDataSuccessful(this.favorites);
+  FavoritesSuccessfulState(this.favorites);
 }
 
-final class FavoritesDataError extends ProfileDataState {
-  final String message;
-  FavoritesDataError(this.message);
+
+final class IsInCartState extends ProfileDataState {}
+
+final class IsNotInCartState extends ProfileDataState {}
+
+final class ChangeAmountProductCartState extends ProfileDataState {}
+
+final class CartLoadingState extends ProfileDataState{}
+
+final class CartErrorState extends ProfileDataState{
+  final String? error;
+  CartErrorState(this.error);
+}
+
+final class CartSuccessfulState extends ProfileDataState {
+  final List<OrderModel> cart;
+  CartSuccessfulState(this.cart);
 }

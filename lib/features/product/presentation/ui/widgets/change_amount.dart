@@ -5,7 +5,8 @@ import '../../../../../cores/shared/themes/app_text_styles.dart';
 import '../../../../../cores/utils/constants/app_colors.dart';
 
 class ChangeAmount extends StatefulWidget {
-  const ChangeAmount({super.key});
+  final void Function(int)? onTap;
+  const ChangeAmount({super.key, this.onTap});
 
   @override
   State<ChangeAmount> createState() => _ChangeAmountState();
@@ -26,6 +27,7 @@ class _ChangeAmountState extends State<ChangeAmount> {
                 count--;
               });
             }
+            widget.onTap?.call(count);
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 2.w),
@@ -39,6 +41,7 @@ class _ChangeAmountState extends State<ChangeAmount> {
             setState(() {
               count++;
             });
+            widget.onTap?.call(count);
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 2.w),

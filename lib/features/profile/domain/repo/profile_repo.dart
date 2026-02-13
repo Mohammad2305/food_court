@@ -20,4 +20,12 @@ abstract class ProfileRepo {
     required ProductModel? product,
     required dynamic snapshot,
   });
+
+  addProductCart({required ProductModel? product, required int? amount});
+
+  changeAmountProductCart({
+    required ProductModel? product,
+    required int? newAmount,
+    required dynamic snapshot,
+});
 }

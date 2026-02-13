@@ -5,7 +5,8 @@ class ScreenLayout extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final double height;
-  const ScreenLayout({super.key, required this.child, this.padding, required this.height});
+  final Color? screenLayoutColor;
+  const ScreenLayout({super.key, required this.child, this.padding, required this.height, this.screenLayoutColor});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class ScreenLayout extends StatelessWidget {
         padding: padding,
         height: height,
         margin: EdgeInsets.zero,
-        decoration: AppBoxDecoration.welcomeButton(Colors.white),
+        decoration: AppBoxDecoration.welcomeButton(screenLayoutColor??Colors.white),
         width: double.infinity,
         child: child,
       ),
